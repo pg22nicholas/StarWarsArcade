@@ -11,5 +11,7 @@ void Reticle::Initialize()
 	reticleColor.mColor[3] = 255;
 	AddComponent(new CircleComponent(this, 20, reticleColor, false));
 
+	AddComponent(new MovementComponent(this));
+
 	GameObject::Initialize();
 }

@@ -152,6 +152,7 @@
     <ClInclude Include="Engine\Public\EngineTypes.h" />
     <ClInclude Include="Engine\Public\SDL.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Game\Private\exVector3.h" />
     <ClInclude Include="Game\Public\GameInterface.h" />
     <ClInclude Include="IPhysicsCollisionEvent.h" />
     <ClInclude Include="PhysicsComponent.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Game\Private\exVector3.cpp" />
     <ClCompile Include="Game\Private\Game.cpp" />
     <ClCompile Include="Game\Private\Main.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />

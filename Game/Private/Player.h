@@ -14,11 +14,12 @@ public:
 
 	void ApplyMovement(MOVEMENT movement);
 	
-	
+	Reticle* GetReticle();
 
 private:
 
 	float mMovementSpeed = 100;
+	Reticle* mReticle;
 };
 
 

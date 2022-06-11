@@ -2,15 +2,19 @@
 #include "Engine/Public/EngineInterface.h"
 #include "Game/Private/Utils.h"
 #include "Bounds.h"
+#include "ControllerComponent.h"
 
 Player::Player() : GameObject(Bounds::GetOrigin())
 {
+	mReticle = new Reticle();
+	mReticle->Initialize();
 }
 
 void Player::Initialize()
 {
 	// Player has no rendering capabilities
 	AddComponent(new PhysicsComponent(this, false, 0, 0, exVector3()));
+	AddComponent(new ControllerComponent(this));
 	// TODO: health, and stat components
 
 	GameObject::Initialize();
@@ -30,4 +34,9 @@ void Player::ApplyMovement(MOVEMENT movement)
 		FindComponent<PhysicsComponent>(ComponentTypes::Physics)->SetVelocity(exVector3(0, 0, 0));
 		break;
 	}
+}
+
+Reticle* Player::GetReticle()
+{
+	return mReticle;
 }

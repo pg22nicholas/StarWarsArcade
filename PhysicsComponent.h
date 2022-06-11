@@ -33,9 +33,6 @@ private:
 
 	bool CircleSquareCollisionCheck(CircleComponent* circle, BoxComponent* box);
 
-	// add core functionality to Global Gravity Optional
-	//static float Gravity; 
-
 public:
 
 	//All Physics Components

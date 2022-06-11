@@ -6,10 +6,8 @@ Ship::Ship() : GameObject()
 {
 }
 
-//Overriden from the Ball class.
 void Ship::Initialize()
 {
-	//Added a s quare Component to our Ball;
 	AddComponent(new BoxComponent(this, 50, 50));
 	AddComponent(new PhysicsComponent(this, true, 0.5f, 5.0f, exVector2{ 40, 0}));
 	mTransform->SetPosition(exVector2{ 400, 300 });
@@ -19,9 +17,8 @@ void Ship::Initialize()
 	GameObject::Initialize();
 }
 
-//Collision Event Litsner
+// Collision event listener
 void Ship::OnCollision(PhysicsComponent* pCurrentComponent, PhysicsComponent* pOtherComponent)
 {
-	// TODO: Update Position
 	FindComponent<BoxComponent>(ComponentTypes::Box)->SetColor(ColorTypes::RED);
 }

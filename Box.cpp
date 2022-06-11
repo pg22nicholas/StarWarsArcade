@@ -6,10 +6,8 @@ Box::Box() : GameObject()
 {
 }
 
-//Overriden from the Ball class.
 void Box::Initialize()
 {
-	//Added a s quare Component to our Ball;
 	AddComponent(new BoxComponent(this, 50, 50));
 	exVector2 velocity;
 	velocity.x = 40;
@@ -25,6 +23,5 @@ void Box::Initialize()
 //Collision Event Litsner
 void Box::OnCollision(PhysicsComponent* pCurrentComponent, PhysicsComponent* pOtherComponent)
 {
-	// TODO: Update Position
 	FindComponent<BoxComponent>(ComponentTypes::Box)->SetColor(ColorTypes::RED);
 }

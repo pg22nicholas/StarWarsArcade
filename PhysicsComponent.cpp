@@ -31,7 +31,6 @@ ComponentTypes PhysicsComponent::GetType()
 
 bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 {
-	//return bIsCollisionEnabled;
 	BoxComponent* MyBoxComp = mOwningGameObject->FindComponent<BoxComponent>(ComponentTypes::Box);
 	CircleComponent* MyCircleComp = mOwningGameObject->FindComponent<CircleComponent>(ComponentTypes::Circle);
 	BoxComponent* OtherBoxComp = OtherPhysicsComponent->mOwningGameObject->FindComponent<BoxComponent>(ComponentTypes::Box);
@@ -126,7 +125,6 @@ void PhysicsComponent::Update(float pDeltaTime)
 				continue;
 			}
 
-			//TODO - Maybe have IsColliding Produce a ExVector2 that contains the Normal of the COllision
 			if (IsColliding(PhysicsComponentIterator) && PhysicsComponentIterator->bIsCollisionEnabled)
 			{
 				// Adding Collision Check
@@ -144,7 +142,4 @@ void PhysicsComponent::AddColissionEventLitsner(IPhysicsCollisionEvent* pEvent)
 	PhysicsComponent::mCollisionEvents.push_back(pEvent);
 }
 
-//You can move the Update / Is Colliding / add CollisionEventLitsner / the Static Event Litsner Array to a singleton
-
-//std::vector<IPhysicsCollisionEvent*> PhysicsComponent::mCollisionEvents;
 std::vector<PhysicsComponent*> PhysicsComponent::mAllPhysicsComponents;

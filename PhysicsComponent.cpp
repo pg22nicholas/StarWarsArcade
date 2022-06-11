@@ -111,8 +111,7 @@ void PhysicsComponent::Update(float pDeltaTime)
 {
 	// Update position based on velocity
 	exVector3 currPos = mOwningGameObject->GetTransform()->GetPosition();
-	currPos.x += mVelocity.x * pDeltaTime;
-	currPos.y += mVelocity.y * pDeltaTime;
+	currPos += mVelocity * pDeltaTime;
 	mOwningGameObject->GetTransform()->SetPosition(currPos);
 
 	// notify collision listeners if collision occured

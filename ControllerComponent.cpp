@@ -35,20 +35,20 @@ void ControllerComponent::ReadInput(const uint8_t* pState)
 void ControllerComponent::SetReticleMovement()
 {
 	PhysicsComponent* physicsComp = mOwningGameObject->FindComponent<PhysicsComponent>(ComponentTypes::Physics);
-	Transform* tranform = mOwningGameObject->GetTransform();
+	Transform* transform = mOwningGameObject->GetTransform();
 	exVector3 velocity;
 
 	if (mReticleInput == 1 << UP_INPUT) {
-		velocity += tranform->GetUp();
+		velocity += transform->GetUp();
 	}
 	else if (mReticleInput == 1 << DOWN_INPUT) {
-		velocity += tranform->GetUp() * -1;
+		velocity += transform->GetUp() * -1;
 	}
 	if (mReticleInput == 1 << RIGHT_INPUT) {
-		velocity += tranform->GetRight();
+		velocity += transform->GetRight();
 	}
 	else if (mReticleInput == 1 << LEFT_INPUT) {
-		velocity += tranform->GetRight() * -1;
+		velocity += transform->GetRight() * -1;
 	}
 	if (mReticleInput != 0) {
 		physicsComp->SetVelocity(velocity.Normalize() * mReticleSpeed);

@@ -15,6 +15,7 @@
 #include "PhysicsComponent.h"
 #include "Ship.h"
 #include "Bullet.h"
+#include "Player.h"
 
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -49,5 +50,6 @@ private:
 	void						Render();
 	void						Update(float fDeltaT);
 	void						ProcessInputs();
+	Player*						mPlayer;
 
 };

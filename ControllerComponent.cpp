@@ -2,7 +2,7 @@
 
 std::vector<ControllerComponent*> ControllerComponent::AllGameControllerComponents;
 
-ControllerComponent::ControllerComponent(GameObject* Owner) : Component(Owner), mLeft(false), mRight(false), mUp(false), mDown(false), mFire(false) {}
+ControllerComponent::ControllerComponent(GameObject* Owner) : Component(Owner), mReticleInput(0), mFire(false) {}
 
 void ControllerComponent::Initialize()
 {
@@ -21,9 +21,9 @@ ComponentTypes ControllerComponent::GetType()
 
 void ControllerComponent::ProccessInput(const uint8_t* pState)
 {
-	mUp |= pState[SDL_SCANCODE_UP];
-	mDown |= pState[SDL_SCANCODE_DOWN];
-	mLeft |= pState[SDL_SCANCODE_LEFT];
-	mRight |= pState[SDL_SCANCODE_RIGHT];
+	mReticleInput |= pState[SDL_SCANCODE_UP] << UP;
+	mReticleInput |= pState[SDL_SCANCODE_DOWN] << DOWN;
+	mReticleInput |= pState[SDL_SCANCODE_LEFT] << LEFT;
+	mReticleInput |= pState[SDL_SCANCODE_RIGHT] << RIGHT;
 	mFire |= pState[SDL_SCANCODE_SPACE];
 }

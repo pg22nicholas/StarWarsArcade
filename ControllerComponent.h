@@ -2,6 +2,11 @@
 #include <vector>
 #include "Component.h"
 #include "SDL2-2.0.3/include/SDL_scancode.h"
+#define LEFT 0
+#define RIGHT 1
+#define UP 2
+#define DOWN 3
+#define FIRE
 
 class ControllerComponent :
     public Component
@@ -16,11 +21,7 @@ public:
 	virtual void ProccessInput(const uint8_t* pState);
 
 private:
-
-	bool mLeft;
-	bool mRight;
-	bool mUp;
-	bool mDown;
+	int mReticleInput;
 	bool mFire;
 };
 

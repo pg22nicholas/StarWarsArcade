@@ -40,3 +40,18 @@ exVector3 Transform::GetLocalPosition() {
 	exVector3 localVec = mParentGameObject->GetTransform()->GetLocalPosition() + mPosition;
 	return localVec;
 }
+
+exVector3 Transform::GetForward()
+{
+	return mForward;
+}
+
+exVector3 Transform::GetUp()
+{
+	return mUp;
+}
+
+exVector3 Transform::GetRight()
+{
+	return exVector3::Cross(mUp, mForward);
+}

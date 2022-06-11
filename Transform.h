@@ -17,6 +17,10 @@ public:
 	exVector3 GetPosition();
 	exVector3 GetLocalPosition();
 
+	exVector3 GetForward();
+	exVector3 GetUp();
+	exVector3 GetRight();
+
 	void SetPosition(exVector3 position);
 	GameObject* GetParent();
 

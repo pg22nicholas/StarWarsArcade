@@ -7,6 +7,7 @@ enum class ComponentTypes
 	Physics,
 	Box,
 	Circle,
+	Controller
 };
 
 class GameObject;

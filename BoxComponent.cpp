@@ -29,10 +29,10 @@ ComponentTypes BoxComponent::GetType()
 
 void BoxComponent::Render()
 {
-	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();
+	exVector3 position = mOwningGameObject->GetTransform()->GetLocalPosition();
 
 	// keep local to player camera position
-	float x = position.x -= PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetPosition().x;
+	float x = position.x;
 	float y = position.y;
 	exVector2 topLeft;
 

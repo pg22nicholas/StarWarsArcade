@@ -29,10 +29,7 @@ float CircleComponent::GetRadius()
 
 void CircleComponent::Render()
 { 
-	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();
-
-	// Keep position local to player camera
-	position.x -= PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetPosition().x;
+	exVector3 position = mOwningGameObject->GetTransform()->GetLocalPosition();
 
 	// gets its z percent size based on z distance
 	float zPercent = Bounds::zSizePercentage(position.z);

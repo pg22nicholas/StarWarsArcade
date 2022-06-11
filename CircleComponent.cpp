@@ -1,4 +1,5 @@
 #include "CircleComponent.h"
+#include "Game/Private/PlayerManager.h"
 
 std::vector<CircleComponent*> CircleComponent::AllCircleComponents;
 
@@ -28,6 +29,9 @@ float CircleComponent::GetRadius()
 
 void CircleComponent::Render()
 { 
-	exVector2 position = mOwningGameObject->GetTransform()->GetPosition();
-	AccessEngine()->DrawCircle(position, mRadius, mC, 0);
+	exVector3 position = mOwningGameObject->GetTransform()->GetLocalPosition();
+
+	// gets its z percent size based on z distance
+	float zPercent = Bounds::zSizePercentage(position.z);
+	AccessEngine()->DrawCircle(position.getExVector2(), mRadius * zPercent, mC, 0);
 }

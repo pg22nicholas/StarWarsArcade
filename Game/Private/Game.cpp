@@ -14,6 +14,7 @@
 #include "Box.h"
 #include "BoxComponent.h"
 #include "CircleComponent.h"
+#include "PlayerManager.h"
 
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -26,8 +27,6 @@ const char* gWindowName = "Sample EngineX Game";
 MyGame::MyGame()
 	: mEngine( nullptr )
 	, mFontID( -1 )
-	, mUp( false )
-	, mDown( false )
 {
 }
 
@@ -87,8 +86,8 @@ void MyGame::OnEventsConsumed()
 	int nKeys = 0;
 	const Uint8 *pState = SDL_GetKeyboardState( &nKeys );
 
-	mUp = pState[SDL_SCANCODE_UP];
-	mDown = pState[SDL_SCANCODE_DOWN];
+	mInput |= pState[SDL_SCANCODE_LEFT];
+	mInput |= pState[SDL_SCANCODE_RIGHT] << 1;
 }
 
 void MyGame::Render()
@@ -98,15 +97,22 @@ void MyGame::Render()
 	}
 	for (CircleComponent* circle : CircleComponent::AllCircleComponents) {
 		circle->Render();
-	}
-
+	} 
 }
 
 void MyGame::Update(float fDeltaT)
 {
+	ProcessInputs();
 	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
 		physicsComponent->Update(fDeltaT);
 	}
+}
+
+void MyGame::ProcessInputs()
+{
+	// Send input to player
+	PlayerManager::GetManager()->ReadInput(mInput);
+	mInput = 0;
 }
 
 //-----------------------------------------------------------------

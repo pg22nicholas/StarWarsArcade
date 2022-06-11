@@ -9,6 +9,9 @@ class GameObject
 public:
 
 	GameObject();
+	GameObject(exVector3 startingPosition);
+	GameObject(GameObject* parent);
+	GameObject(exVector3 startingPosition, GameObject* parent);
 	~GameObject();
 
 	virtual void Initialize();

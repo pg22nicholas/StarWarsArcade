@@ -3,7 +3,7 @@
 #include "Component.h"
 #include "IPhysicsCollisionEvent.h"
 #include "PhysicsComponent.h"
-#include "Engine/Public/EngineTypes.h"
+#include "Game/Private/exVector3.h"
 
 class TransformComponent;
 class BoxComponent;
@@ -13,7 +13,7 @@ class PhysicsComponent : public Component
 {
 public:
 
-	PhysicsComponent(GameObject* OwningGameObject, bool gravityEnabled = false, float gravityScale = 1.0f, float mass = 0.0f, exVector2 Velocity = exVector2(), bool bIsCollisionEnabled = true);
+	PhysicsComponent(GameObject* OwningGameObject, bool gravityEnabled = false, float gravityScale = 1.0f, float mass = 0.0f, exVector3 Velocity = exVector3(), bool bIsCollisionEnabled = true);
 	virtual void Initialize() override;
 	virtual void Destroy() override;
 	virtual ComponentTypes GetType() override;
@@ -22,19 +22,19 @@ public:
 
 	virtual void Update(float pDeltaTime);
 
+	exVector3 GetVelocity();
+	void SetVelocity(exVector3 velocity);
+
 private:
 
 	bool bGravityEnabled;
 	float mGravityScale;
 	float mMass;
 
-	exVector2 mVelocity;
+	exVector3 mVelocity;
 	bool bIsCollisionEnabled;
 
 	bool CircleSquareCollisionCheck(CircleComponent* circle, BoxComponent* box);
-
-	// add core functionality to Global Gravity Optional
-	//static float Gravity; 
 
 public:
 

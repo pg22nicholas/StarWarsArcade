@@ -42,12 +42,12 @@ private:
 
 	int							mFontID;
 
-	bool						mUp;
-	bool						mDown;
+	int							mInput;	// captures all input keys
 
 	std::vector<GameObject*>    mAllGameObjects;
 
 	void						Render();
 	void						Update(float fDeltaT);
+	void						ProcessInputs();
 
 };

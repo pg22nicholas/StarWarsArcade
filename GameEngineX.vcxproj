@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Bounds.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="BoxComponent.h" />
     <ClInclude Include="Bullet.h" />
@@ -152,6 +153,11 @@
     <ClInclude Include="Engine\Public\EngineTypes.h" />
     <ClInclude Include="Engine\Public\SDL.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Game\Private\exVector3.h" />
+    <ClInclude Include="Game\Private\Input.h" />
+    <ClInclude Include="Game\Private\Player.h" />
+    <ClInclude Include="Game\Private\PlayerManager.h" />
+    <ClInclude Include="Game\Private\Utils.h" />
     <ClInclude Include="Game\Public\GameInterface.h" />
     <ClInclude Include="IPhysicsCollisionEvent.h" />
     <ClInclude Include="PhysicsComponent.h" />
@@ -167,8 +173,11 @@
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Game\Private\exVector3.cpp" />
     <ClCompile Include="Game\Private\Game.cpp" />
     <ClCompile Include="Game\Private\Main.cpp" />
+    <ClCompile Include="Game\Private\Player.cpp" />
+    <ClCompile Include="Game\Private\PlayerManager.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="ShapeComponent.cpp" />
     <ClCompile Include="Ship.cpp" />

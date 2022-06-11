@@ -6,6 +6,21 @@ GameObject::GameObject()
 	mTransform = new Transform(this);
 	AddComponent(mTransform);
 }
+GameObject::GameObject(exVector3 startingPosition)
+{
+	mTransform = new Transform(this, startingPosition);
+	AddComponent(mTransform);
+}
+GameObject::GameObject(GameObject* parent)
+{
+	mTransform = new Transform(this, parent);
+	AddComponent(mTransform);
+}
+GameObject::GameObject(exVector3 startingPosition, GameObject* parent)
+{
+	mTransform = new Transform(this, startingPosition, parent);
+	AddComponent(mTransform);
+}
 // Destroyiing all the Componetns linked to Our Game Object.
 GameObject::~GameObject()
 {

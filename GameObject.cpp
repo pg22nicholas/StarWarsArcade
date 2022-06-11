@@ -4,6 +4,7 @@
 GameObject::GameObject() 
 {
 	mTransform = new Transform(this);
+	AddComponent(mTransform);
 }
 // Destroyiing all the Componetns linked to Our Game Object.
 GameObject::~GameObject()

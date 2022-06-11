@@ -3,7 +3,7 @@
 #include "Game/Private/Utils.h"
 #include "Bounds.h"
 #include "CircleComponent.h"
-#include "MovementComponent.h"
+#include "PhysicsComponent.h"
 
 class Reticle :
     public GameObject

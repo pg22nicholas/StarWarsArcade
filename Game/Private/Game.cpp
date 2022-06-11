@@ -14,6 +14,7 @@
 #include "Box.h"
 #include "BoxComponent.h"
 #include "CircleComponent.h"
+#include "ControllerComponent.h"
 #include "PlayerManager.h"
 
 //-----------------------------------------------------------------
@@ -27,6 +28,7 @@ const char* gWindowName = "Sample EngineX Game";
 MyGame::MyGame()
 	: mEngine( nullptr )
 	, mFontID( -1 )
+	, mPlayer(nullptr)
 {
 }
 
@@ -46,11 +48,14 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 
 	mFontID = mEngine->LoadFont( "afternight.ttf", 32 );
 
-	Ship* ship = new Ship();
-	ship->Initialize();
+	//Ship* ship = new Ship();
+	//ship->Initialize();
 
-	Bullet* bullet = new Bullet();
-	bullet->Initialize();
+	//Bullet* bullet = new Bullet();
+	//bullet->Initialize();
+
+	mPlayer = new Player();
+	mPlayer->Initialize();
 }
 
 //-----------------------------------------------------------------
@@ -88,6 +93,11 @@ void MyGame::OnEventsConsumed()
 
 	mInput |= pState[SDL_SCANCODE_LEFT];
 	mInput |= pState[SDL_SCANCODE_RIGHT] << 1;
+
+	for (ControllerComponent* controller : ControllerComponent::AllGameControllerComponents) {
+		controller->ProccessInput(pState);
+	}
+
 }
 
 void MyGame::Render()
@@ -102,7 +112,7 @@ void MyGame::Render()
 
 void MyGame::Update(float fDeltaT)
 {
-	ProcessInputs();
+	//ProcessInputs();
 	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
 		physicsComponent->Update(fDeltaT);
 	}
@@ -111,7 +121,7 @@ void MyGame::Update(float fDeltaT)
 void MyGame::ProcessInputs()
 {
 	// Send input to player
-	PlayerManager::GetManager()->ReadInput(mInput);
+	//PlayerManager::GetManager()->ReadInput(mInput);
 	mInput = 0;
 }
 

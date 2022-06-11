@@ -28,6 +28,6 @@ float CircleComponent::GetRadius()
 
 void CircleComponent::Render()
 { 
-	exVector2 position = mOwningGameObject->GetTransform()->GetPosition();
-	AccessEngine()->DrawCircle(position, mRadius, mC, 0);
+	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();
+	AccessEngine()->DrawCircle(position.getExVector2(), mRadius, mC, 0);
 }

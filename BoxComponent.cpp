@@ -28,7 +28,8 @@ ComponentTypes BoxComponent::GetType()
 
 void BoxComponent::Render()
 {
-	exVector2 position = mOwningGameObject->GetTransform()->GetPosition();
+	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();
+
 	float x = position.x;
 	float y = position.y;
 	exVector2 topLeft;

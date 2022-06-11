@@ -1,14 +1,13 @@
 #include "Transform.h"
 
 
+
 Transform::Transform(GameObject* OwningGameObject) :Component(OwningGameObject)
-{
-    mPosition = exVector2();
-    mPosition.x = 0;
-    mPosition.y = 0;
+{ 
+    mPosition = exVector3(1, 1, 1);
 }
 
-Transform::Transform(GameObject* OwningGameObject, exVector2 position) : Component(OwningGameObject), mPosition(position)
+Transform::Transform(GameObject* OwningGameObject, exVector3 position) : Component(OwningGameObject), mPosition(position)
 {
 }
 
@@ -17,7 +16,7 @@ ComponentTypes Transform::GetType()
     return ComponentTypes::Transform;
 }
 
-void Transform::SetPosition(exVector2 position)
+void Transform::SetPosition(exVector3 position)
 {
     mPosition = position;
 }

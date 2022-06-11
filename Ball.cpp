@@ -9,7 +9,7 @@ Ball::Ball() : GameObject()
 void Ball::Initialize()
 {
 	AddComponent(new CircleComponent(this, 50.0f));
-	AddComponent(new PhysicsComponent(this, true, 0.5f, 5.0f, exVector2()));
+	AddComponent(new PhysicsComponent(this, true, 0.5f, 5.0f, exVector3()));
 	
 	PhysicsComponent* MyPhysicsComponent = FindComponent<PhysicsComponent>(ComponentTypes::Physics);
 	MyPhysicsComponent->AddColissionEventLitsner(this);

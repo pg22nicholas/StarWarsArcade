@@ -5,7 +5,7 @@
 #include "CircleComponent.h"
 #include <math.h> 
 
-PhysicsComponent::PhysicsComponent(GameObject* OwningGameObject, bool gravityEnabled, float gravityScale, float mass, exVector2 Velocity, bool collisionEnabled) :Component(OwningGameObject)
+PhysicsComponent::PhysicsComponent(GameObject* OwningGameObject, bool gravityEnabled, float gravityScale, float mass, exVector3 Velocity, bool collisionEnabled) :Component(OwningGameObject)
 {
 	bGravityEnabled = gravityEnabled;
 	mGravityScale = gravityScale;
@@ -38,10 +38,10 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 
 	if (MyCircleComp != nullptr && OtherCircleComp != nullptr)
 	{
-		exVector2 pos1 = MyCircleComp->GetGameObject()->GetTransform()->GetPosition();
+		exVector3 pos1 = MyCircleComp->GetGameObject()->GetTransform()->GetPosition();
 		float radius1 = MyCircleComp->GetRadius();
 		
-		exVector2 pos2 = OtherCircleComp->GetGameObject()->GetTransform()->GetPosition();
+		exVector3 pos2 = OtherCircleComp->GetGameObject()->GetTransform()->GetPosition();
 		float radius2 = OtherCircleComp->GetRadius();
 
 		// circles collision check using radius and distance
@@ -52,10 +52,10 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 	}
 	if (MyBoxComp != nullptr && OtherBoxComp != nullptr)
 	{
-		exVector2 box1 = MyBoxComp->GetGameObject()->GetTransform()->GetPosition();
+		exVector3 box1 = MyBoxComp->GetGameObject()->GetTransform()->GetPosition();
 		float box1H = MyBoxComp->GetHeight();
 		float box1W = MyBoxComp->GetWidth();
-		exVector2 box2 = OtherBoxComp->GetGameObject()->GetTransform()->GetPosition();
+		exVector3 box2 = OtherBoxComp->GetGameObject()->GetTransform()->GetPosition();
 		float box2H = OtherBoxComp->GetHeight();
 		float box2W = OtherBoxComp->GetWidth();
 
@@ -80,13 +80,13 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 // Collision check for a square against a circle
 bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, BoxComponent* boxComp)
 {
-	exVector2 circle = circleComp->GetGameObject()->GetTransform()->GetPosition();
+	exVector3 circle = circleComp->GetGameObject()->GetTransform()->GetPosition();
 	float circleRadius = circleComp->GetRadius();
-	exVector2 box = boxComp->GetGameObject()->GetTransform()->GetPosition();
+	exVector3 box = boxComp->GetGameObject()->GetTransform()->GetPosition();
 	float boxHeight = boxComp->GetHeight();
 	float boxWidth = boxComp->GetWidth();
 
-	exVector2 circleDistance;
+	exVector3 circleDistance;
 	circleDistance.x = abs(circle.x - box.x);
 	circleDistance.y = abs(circle.y - box.y);
 
@@ -110,7 +110,7 @@ bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, B
 void PhysicsComponent::Update(float pDeltaTime)
 {
 	// Update position based on velocity
-	exVector2 currPos = mOwningGameObject->GetTransform()->GetPosition();
+	exVector3 currPos = mOwningGameObject->GetTransform()->GetPosition();
 	currPos.x += mVelocity.x * pDeltaTime;
 	currPos.y += mVelocity.y * pDeltaTime;
 	mOwningGameObject->GetTransform()->SetPosition(currPos);

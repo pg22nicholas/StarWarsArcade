@@ -9,9 +9,7 @@ Box::Box() : GameObject()
 void Box::Initialize()
 {
 	AddComponent(new BoxComponent(this, 50, 50));
-	exVector2 velocity;
-	velocity.x = 40;
-	velocity.y = 0;
+	exVector3 velocity(40, 0, 0);
 	AddComponent(new PhysicsComponent(this, true, 0.5f, 5.0f, velocity));
 
 	PhysicsComponent* MyPhysicsComponent = FindComponent<PhysicsComponent>(ComponentTypes::Physics);

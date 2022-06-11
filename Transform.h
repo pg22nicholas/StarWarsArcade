@@ -1,22 +1,23 @@
 #pragma once
 #include "Component.h"
-#include "Engine/Public/EngineTypes.h"
+
+#include "Game/Private/exVector3.h"
 
 class Transform :public Component
 {
 
 public:
 	Transform(GameObject* OwningGameObject);
-	Transform(GameObject* OwningGameObject, exVector2 position);
+	Transform(GameObject* OwningGameObject, exVector3 position);
 
 	virtual ComponentTypes GetType() override;
 
-	exVector2 GetPosition(){ return mPosition; }
+	exVector3 GetPosition(){ return mPosition; }
 
-	void SetPosition(exVector2 position);
+	void SetPosition(exVector3 position);
 
 private:
 
-	exVector2 mPosition;
+	exVector3 mPosition;
 };
 

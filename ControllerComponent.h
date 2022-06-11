@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include "Component.h"
+#include "PhysicsComponent.h"
+#include "GameObject.h"
 #include "SDL2-2.0.3/include/SDL_scancode.h"
 #define LEFT_INPUT 0
 #define RIGHT_INPUT 1
@@ -17,10 +19,12 @@ public:
 	virtual void Destroy() override;
 	virtual ComponentTypes GetType() override;
 
-	virtual void ProccessInput(const uint8_t* pState);
+	virtual void ReadInput(const uint8_t* pState);
+	void SetReticleMovement();
 
 private:
 	int mReticleInput;
+	float mReticleSpeed = 20;
 	bool mFire;
 };
 

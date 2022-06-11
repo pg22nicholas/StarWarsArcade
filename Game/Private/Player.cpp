@@ -14,7 +14,6 @@ void Player::Initialize()
 {
 	// Player has no rendering capabilities
 	AddComponent(new PhysicsComponent(this, false, 0, 0, exVector3()));
-	AddComponent(new ControllerComponent(this));
 	// TODO: health, and stat components
 
 	GameObject::Initialize();

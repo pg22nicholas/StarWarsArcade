@@ -22,6 +22,9 @@ public:
 
 	virtual void Update(float pDeltaTime);
 
+	exVector3 GetVelocity();
+	exVector3 SetVelocity(exVector3 velocity);
+
 private:
 
 	bool bGravityEnabled;

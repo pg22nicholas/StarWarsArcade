@@ -136,6 +136,16 @@ void PhysicsComponent::Update(float pDeltaTime)
 	}
 }
 
+exVector3 PhysicsComponent::GetVelocity()
+{
+	return mVelocity;
+}
+
+exVector3 PhysicsComponent::SetVelocity(exVector3 velocity)
+{
+	return mVelocity = velocity;
+}
+
 void PhysicsComponent::AddColissionEventLitsner(IPhysicsCollisionEvent* pEvent)
 {
 	PhysicsComponent::mCollisionEvents.push_back(pEvent);

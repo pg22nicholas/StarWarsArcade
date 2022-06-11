@@ -1,4 +1,5 @@
 #include "PlayerManager.h"
+#include "Input.h"
 
 // Singleton representing the player position and value
 PlayerManager* PlayerManager::GetManager()
@@ -12,6 +13,7 @@ PlayerManager* PlayerManager::GetManager()
 PlayerManager::PlayerManager()
 {
 	mPlayer = new Player();
+	mPlayer->Initialize();
 }
 
 PlayerManager::~PlayerManager()
@@ -23,6 +25,12 @@ PlayerManager::~PlayerManager()
 // Read user input and apply to player if applicable
 void PlayerManager::ReadInput(int input)
 {
+	if (input & (int)INPUTS::LEFT) {
+		mPlayer->ApplyMovement(MOVEMENT::LEFT);
+	}
+	else if (input & (int)INPUTS::RIGHT) {
+		mPlayer->ApplyMovement(MOVEMENT::RIGHT);
+	}
 }
 
 PlayerManager* PlayerManager::sInstance = nullptr;

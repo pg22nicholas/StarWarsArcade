@@ -154,8 +154,10 @@
     <ClInclude Include="Engine\Public\SDL.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Game\Private\exVector3.h" />
+    <ClInclude Include="Game\Private\Input.h" />
     <ClInclude Include="Game\Private\Player.h" />
     <ClInclude Include="Game\Private\PlayerManager.h" />
+    <ClInclude Include="Game\Private\Utils.h" />
     <ClInclude Include="Game\Public\GameInterface.h" />
     <ClInclude Include="IPhysicsCollisionEvent.h" />
     <ClInclude Include="PhysicsComponent.h" />

@@ -1,5 +1,6 @@
 #pragma once
 
+// Holds position bounds of GameObjects and simple related logic
 class Bounds {
 
 public:

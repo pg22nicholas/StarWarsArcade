@@ -3,8 +3,13 @@
 
 std::vector<CircleComponent*> CircleComponent::AllCircleComponents;
 
-CircleComponent::CircleComponent(GameObject* Owner, float radius) :ShapeComponent(Owner), mRadius(radius)
+CircleComponent::CircleComponent(GameObject* Owner, float radius, bool isFilled) :ShapeComponent(Owner), mRadius(radius), bIsFilled(isFilled)
 {
+}
+
+CircleComponent::CircleComponent(GameObject* Owner, float radius, exColor color, bool isFilled) :ShapeComponent(Owner), mRadius(radius), bIsFilled(isFilled)
+{
+	mC = color;
 }
 
 void CircleComponent::Initialize()
@@ -33,5 +38,9 @@ void CircleComponent::Render()
 
 	// gets its z percent size based on z distance
 	float zPercent = Bounds::zSizePercentage(position.z);
-	AccessEngine()->DrawCircle(position.getExVector2(), mRadius * zPercent, mC, 0);
+	if(bIsFilled)
+		AccessEngine()->DrawCircle(position.getExVector2(), mRadius * zPercent, mC, 0);
+	else
+
+		AccessEngine()->DrawLineCircle(position.getExVector2(), mRadius * zPercent, mC, 0);
 }

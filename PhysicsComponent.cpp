@@ -141,9 +141,9 @@ exVector3 PhysicsComponent::GetVelocity()
 	return mVelocity;
 }
 
-exVector3 PhysicsComponent::SetVelocity(exVector3 velocity)
+void PhysicsComponent::SetVelocity(exVector3 velocity)
 {
-	return mVelocity = velocity;
+	mVelocity = velocity;
 }
 
 void PhysicsComponent::AddColissionEventLitsner(IPhysicsCollisionEvent* pEvent)

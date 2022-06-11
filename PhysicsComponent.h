@@ -23,7 +23,7 @@ public:
 	virtual void Update(float pDeltaTime);
 
 	exVector3 GetVelocity();
-	exVector3 SetVelocity(exVector3 velocity);
+	void SetVelocity(exVector3 velocity);
 
 private:
 

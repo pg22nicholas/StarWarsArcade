@@ -88,6 +88,8 @@
     <ClInclude Include="Game\Private\Utils.h">
       <Filter>Source Files\Game\Public</Filter>
     </ClInclude>
+    <ClInclude Include="ControllerComponent.h" />
+    <ClInclude Include="Reticle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">
@@ -137,6 +139,12 @@
     </ClCompile>
     <ClCompile Include="Game\Private\Player.cpp">
       <Filter>Source Files\Game\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="ControllerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Reticle.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -30,7 +30,13 @@ void PlayerManager::ReadInput(int input)
 	}
 	else if (input & (int)INPUTS::RIGHT) {
 		mPlayer->ApplyMovement(MOVEMENT::RIGHT);
-	}
+	} else 
+		mPlayer->ApplyMovement(MOVEMENT::NONE);
+}
+
+Player* PlayerManager::GetPlayer()
+{
+	return mPlayer;
 }
 
 PlayerManager* PlayerManager::sInstance = nullptr;

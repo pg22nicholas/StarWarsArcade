@@ -1,12 +1,9 @@
 #pragma once
 #include "GameObject.h"
 #include "PhysicsComponent.h"
-
-enum class MOVEMENT {
-	LEFT,
-	RIGHT,
-	NONE
-};
+#include "ControllerComponent.h"
+#include "Utils.h"
+#include "Reticle.h"
 
 class Player : public GameObject
 {

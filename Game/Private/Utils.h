@@ -12,3 +12,9 @@
    OutputDebugString( os_.str().c_str() );  \
    OutputDebugStringW(L"\n");				\
 }
+
+enum class MOVEMENT {
+	LEFT,
+	RIGHT,
+	NONE
+};

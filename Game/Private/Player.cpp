@@ -1,15 +1,15 @@
 #include "Player.h"
 #include "Engine/Public/EngineInterface.h"
 #include "Game/Private/Utils.h"
+#include "Bounds.h"
 
-Player::Player() : GameObject()
+Player::Player() : GameObject(Bounds::GetOrigin())
 {
 }
 
 void Player::Initialize()
 {
 	// Player has no rendering capabilities
-	mTransform->SetPosition(exVector3(0, 0, 0));
 	AddComponent(new PhysicsComponent(this, false, 0, 0, exVector3()));
 	// TODO: health, and stat components
 

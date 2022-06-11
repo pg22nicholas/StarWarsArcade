@@ -33,12 +33,17 @@ void BoxComponent::Render()
 	float x = position.x;
 	float y = position.y;
 	exVector2 topLeft;
-	topLeft.x = x - mWidth / 2; 
-	topLeft.y = y - mHeight / 2;
+
+	// Get the size based on its z distance
+	float zPercent = Bounds::zSizePercentage(position.z);
+	float widthBasedOnZ = mWidth * zPercent;
+	float heightBasedOnZ = mHeight * zPercent;
+	topLeft.x = x - widthBasedOnZ / 2;
+	topLeft.y = y - heightBasedOnZ / 2;
 
 	exVector2 bottomRight;
-	bottomRight.x = x + mWidth / 2;
-	bottomRight.y = y + mHeight / 2;
+	bottomRight.x = x + widthBasedOnZ / 2;
+	bottomRight.y = y + heightBasedOnZ / 2;
 
 	AccessEngine()->DrawBox(topLeft, bottomRight, mC, 0);
 }

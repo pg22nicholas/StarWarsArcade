@@ -29,5 +29,8 @@ float CircleComponent::GetRadius()
 void CircleComponent::Render()
 { 
 	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();
-	AccessEngine()->DrawCircle(position.getExVector2(), mRadius, mC, 0);
+
+	// gets its z percent size based on z distance
+	float zPercent = Bounds::zSizePercentage(position.z);
+	AccessEngine()->DrawCircle(position.getExVector2(), mRadius * zPercent, mC, 0);
 }

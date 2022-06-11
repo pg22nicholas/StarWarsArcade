@@ -2,6 +2,7 @@
 #include "Component.h"
 #include "GameObject.h"
 #include "Transform.h"
+#include "Bounds.h"
 
 enum ColorTypes;
 

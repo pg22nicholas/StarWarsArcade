@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Bounds.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="BoxComponent.h" />
     <ClInclude Include="Bullet.h" />

@@ -11,7 +11,7 @@ void Bullet::Initialize()
 {
 	//Added a Circle COmponent to our Ball;
 	AddComponent(new CircleComponent(this, 20.0f));
-	AddComponent(new PhysicsComponent(this, true, 0.5f, 5.0f, exVector3(100, 0, 0)));
+	AddComponent(new PhysicsComponent(this, true, 0.5f, 5.0f, exVector3(100, 0, 5)));
 	mTransform->SetPosition(exVector3(0, 300, 0));
 
 	PhysicsComponent* MyPhysicsComponent = FindComponent<PhysicsComponent>(ComponentTypes::Physics);

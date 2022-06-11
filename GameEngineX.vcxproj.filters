@@ -73,6 +73,9 @@
     <ClInclude Include="Game\Private\exVector3.h">
       <Filter>Source Files\Game\Public</Filter>
     </ClInclude>
+    <ClInclude Include="Bounds.h">
+      <Filter>Source Files\Game\Public</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">

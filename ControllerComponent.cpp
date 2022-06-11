@@ -21,10 +21,10 @@ ComponentTypes ControllerComponent::GetType()
 
 void ControllerComponent::ProccessInput(const uint8_t* pState)
 {
-	mReticleInput |= pState[SDL_SCANCODE_UP] << UP;
-	mReticleInput |= pState[SDL_SCANCODE_DOWN] << DOWN;
-	mReticleInput |= pState[SDL_SCANCODE_LEFT] << LEFT;
-	mReticleInput |= pState[SDL_SCANCODE_RIGHT] << RIGHT;
+	mReticleInput |= pState[SDL_SCANCODE_UP] << UP_INPUT;
+	mReticleInput |= pState[SDL_SCANCODE_DOWN] << DOWN_INPUT;
+	mReticleInput |= pState[SDL_SCANCODE_LEFT] << LEFT_INPUT;
+	mReticleInput |= pState[SDL_SCANCODE_RIGHT] << RIGHT_INPUT;
 
-	mFire |= pState[SDL_SCANCODE_SPACE];
+	//mFire |= pState[SDL_SCANCODE_SPACE];
 }

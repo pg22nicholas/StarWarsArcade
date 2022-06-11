@@ -2,11 +2,10 @@
 #include <vector>
 #include "Component.h"
 #include "SDL2-2.0.3/include/SDL_scancode.h"
-#define LEFT 0
-#define RIGHT 1
-#define UP 2
-#define DOWN 3
-#define FIRE
+#define LEFT_INPUT 0
+#define RIGHT_INPUT 1
+#define UP_INPUT 2
+#define DOWN_INPUT 3
 
 class ControllerComponent :
     public Component

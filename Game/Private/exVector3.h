@@ -1,5 +1,6 @@
 #pragma once
 #include "Engine/Public/EngineTypes.h"
+#include <math.h>
 
 class exVector3
 {
@@ -40,6 +41,11 @@ public:
 
 	static exVector3 Cross(const exVector3& a, const exVector3& b) {
 		return exVector3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
+	}
+
+	exVector3 Normalize() {
+		float magnitude = sqrtf(powf(x, 2) + powf(y, 2) + powf(z, 2));
+		return exVector3(x / magnitude, y / magnitude, z / magnitude);
 	}
 
 	exVector2 getExVector2() {

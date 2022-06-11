@@ -12,6 +12,10 @@ public:
 		return exVector3(x + rhs.x, y + rhs.y, z + rhs.z);
 	}
 
+	exVector3 operator-(const exVector3& rhs) {
+		return exVector3(x - rhs.x, y - rhs.y, z - rhs.z);
+	}
+
 	exVector3& operator+=(const exVector3& rhs) {
 		this->x += rhs.x;
 		this->y += rhs.y;

@@ -1,5 +1,6 @@
 #include "BoxComponent.h"
 #include "GameObject.h"
+#include "Game/Private/PlayerManager.h"
 
 
 class EngineInterface;
@@ -30,7 +31,8 @@ void BoxComponent::Render()
 {
 	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();
 
-	float x = position.x;
+	// keep local to player camera position
+	float x = position.x -= PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetPosition().x;
 	float y = position.y;
 	exVector2 topLeft;
 

@@ -4,7 +4,8 @@
 
 enum class MOVEMENT {
 	LEFT,
-	RIGHT
+	RIGHT,
+	NONE
 };
 
 class Player : public GameObject
@@ -20,7 +21,7 @@ public:
 
 private:
 
-	float mMovementSpeed = 20;
+	float mMovementSpeed = 100;
 };
 
 

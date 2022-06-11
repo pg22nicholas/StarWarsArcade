@@ -95,7 +95,7 @@ void MyGame::OnEventsConsumed()
 	mInput |= pState[SDL_SCANCODE_RIGHT] << 1;
 
 	for (ControllerComponent* controller : ControllerComponent::AllGameControllerComponents) {
-		controller->ProccessInput(pState);
+		controller->ReadInput(pState);
 	}
 
 }

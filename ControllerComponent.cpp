@@ -25,5 +25,6 @@ void ControllerComponent::ProccessInput(const uint8_t* pState)
 	mReticleInput |= pState[SDL_SCANCODE_DOWN] << DOWN;
 	mReticleInput |= pState[SDL_SCANCODE_LEFT] << LEFT;
 	mReticleInput |= pState[SDL_SCANCODE_RIGHT] << RIGHT;
+
 	mFire |= pState[SDL_SCANCODE_SPACE];
 }

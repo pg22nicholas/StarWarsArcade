@@ -12,7 +12,7 @@ void Reticle::Initialize()
 	AddComponent(new CircleComponent(this, 20, reticleColor, false));
 
 	AddComponent(new PhysicsComponent(this, false, 0, 0, exVector3(), false));
-	AddComponent(new ControllerComponent(this));
+	AddComponent(new ReticleController(this));
 
 	GameObject::Initialize();
 }

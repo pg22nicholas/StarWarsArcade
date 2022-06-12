@@ -4,7 +4,7 @@
 #include "Bounds.h"
 #include "CircleComponent.h"
 #include "PhysicsComponent.h"
-#include "ControllerComponent.h"
+#include "ReticleController.h"
 
 class Reticle :
     public GameObject

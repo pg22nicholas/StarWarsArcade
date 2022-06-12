@@ -19,4 +19,9 @@ public:
 	static exVector3 GetOrigin() {
 		return exVector3(centerX, centerY, 0);
 	}
+
+	static const exVector3 TopLeft;
+	static const exVector3 TopRight;
+	static const exVector3 BottomLeft;
+	static const exVector3 BottomRight;
 };

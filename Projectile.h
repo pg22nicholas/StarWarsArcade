@@ -14,7 +14,7 @@ public:
 private:
 	exVector3 mHeading;
 	ColorTypes mColor;
-	float mSpeed = 100;
+	float mSpeed = 500;
 	float mRadius = 50;
 };
 

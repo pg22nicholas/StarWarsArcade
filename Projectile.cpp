@@ -1,6 +1,8 @@
 #include "Projectile.h"
 
 Projectile::Projectile(exVector3 origin, exVector3 heading, ColorTypes color):GameObject(origin),mHeading(heading),mColor(color) {
+
+	Initialize();
 }
 
 void Projectile::Initialize()
@@ -9,4 +11,6 @@ void Projectile::Initialize()
 	CircleComponent* circleComp = new CircleComponent(this, mRadius);
 	circleComp->SetColor(mColor);
 	AddComponent(circleComp);
+
+	GameObject::Initialize();
 }

@@ -47,7 +47,7 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 		// circles collision check using radius and distance
 		float distX = pos1.x - pos2.x;
 		float distY = pos1.y - pos2.y;
-		float distance = sqrt((distX * distX) + (distY * distY));
+		float distance = sqrtf((distX * distX) + (distY * distY));
 		return distance <= radius1 + radius2;
 	}
 	if (MyBoxComp != nullptr && OtherBoxComp != nullptr)

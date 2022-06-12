@@ -26,4 +26,3 @@ private:
 	int mReticleInput;
 	float mSpeed = 400;
 };
-

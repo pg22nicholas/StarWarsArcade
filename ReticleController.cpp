@@ -45,5 +45,5 @@ void ReticleController::ParseInput()
 exVector3 ReticleController::GetAimDirection()
 {
 	exVector3 gameObjectPosition = mOwningGameObject->GetTransform()->GetLocalPosition();
-	return exVector3(gameObjectPosition.x, gameObjectPosition.y, Bounds::zBounds).Normalize();
+	return exVector3(gameObjectPosition.x, gameObjectPosition.y, Bounds::zBounds);
 }

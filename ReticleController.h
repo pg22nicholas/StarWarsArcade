@@ -16,11 +16,10 @@ public:
 	ReticleController(GameObject* Owner);
 
 	virtual void ReadInput(const uint8_t* pState) override;
-	virtual void SetReticleMovement() override;
+	virtual void ParseInput() override;
 
 private:
 	int mReticleInput;
 	float mSpeed = 400;
-	bool mFire;
 };
 

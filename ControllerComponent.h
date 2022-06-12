@@ -11,6 +11,6 @@ public:
 	virtual ComponentTypes GetType() override;
 
 	virtual void ReadInput(const uint8_t* pState) = 0;
-	virtual void SetReticleMovement() = 0;
+	virtual void ParseInput() = 0;
 };
 

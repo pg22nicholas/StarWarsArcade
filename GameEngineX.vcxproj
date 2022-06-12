@@ -150,6 +150,7 @@
     <ClInclude Include="CircleComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ControllerComponent.h" />
+    <ClInclude Include="PlayerController.h" />
     <ClInclude Include="ReticleController.h" />
     <ClInclude Include="Engine\Public\EngineInterface.h" />
     <ClInclude Include="Engine\Public\EngineTypes.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ControllerComponent.cpp" />
+    <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="ReticleController.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Game\Private\exVector3.cpp" />

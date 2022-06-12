@@ -1,6 +1,6 @@
 #include "ReticleController.h"
 
-ReticleController::ReticleController(GameObject* Owner) : ControllerComponent(Owner), mReticleInput(0), mFire(false) {}
+ReticleController::ReticleController(GameObject* Owner) : ControllerComponent(Owner), mReticleInput(0) {}
 
 
 void ReticleController::ReadInput(const uint8_t* pState)
@@ -10,11 +10,10 @@ void ReticleController::ReadInput(const uint8_t* pState)
 	mReticleInput |= pState[SDL_SCANCODE_LEFT] << LEFT_INPUT;
 	mReticleInput |= pState[SDL_SCANCODE_RIGHT] << RIGHT_INPUT;
 
-	SetReticleMovement();
-	//mFire |= pState[SDL_SCANCODE_SPACE];
+	ParseInput();
 }
 
-void ReticleController::SetReticleMovement()
+void ReticleController::ParseInput()
 {
 	PhysicsComponent* physicsComp = mOwningGameObject->FindComponent<PhysicsComponent>(ComponentTypes::Physics);
 	Transform* transform = mOwningGameObject->GetTransform();

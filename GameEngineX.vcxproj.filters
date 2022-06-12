@@ -92,6 +92,7 @@
     <ClInclude Include="Reticle.h" />
     <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="ControllerComponent.h" />
+    <ClInclude Include="PlayerController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">
@@ -152,6 +153,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ControllerComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

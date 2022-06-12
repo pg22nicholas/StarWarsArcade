@@ -166,5 +166,8 @@
     <ClCompile Include="AttackComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bounds.cpp">
+      <Filter>Source Files\Game\Private</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

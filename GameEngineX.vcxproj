@@ -175,6 +175,7 @@
   <ItemGroup>
     <ClCompile Include="AttackComponent.cpp" />
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Bounds.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="BoxComponent.cpp" />
     <ClCompile Include="Bullet.cpp" />

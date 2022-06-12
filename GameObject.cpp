@@ -26,6 +26,17 @@ GameObject::~GameObject()
 {
 	for (Component* IterationComponent : mComponents)
 	{
+		if (IterationComponent != nullptr) {
+			if (IterationComponent != nullptr && IterationComponent->GetType() == ComponentTypes::Transform) {
+				if (Transform* transform = dynamic_cast<Transform*>(IterationComponent)) {
+					std::vector<GameObject*> children = transform->GetChildren();
+					for (GameObject* child : children) {
+						delete child;
+					}
+				}
+			}
+		}
+
 		IterationComponent->Destroy();
 		delete IterationComponent;
 	}

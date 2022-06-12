@@ -11,10 +11,12 @@ Transform::Transform(GameObject* OwningGameObject, exVector3 position) : Compone
 
 Transform::Transform(GameObject* OwningGameObject, GameObject* parentGameObject) : Component(OwningGameObject), mParentGameObject(parentGameObject)
 {
+	mParentGameObject->GetTransform()->AddChild(OwningGameObject);
 }
 
-Transform::Transform(GameObject* OwningGameObject, exVector3 position, GameObject* parentGameObject) : Component(OwningGameObject), mPosition(exVector3(1, 1, 1)), mParentGameObject(parentGameObject)
+Transform::Transform(GameObject* OwningGameObject, exVector3 position, GameObject* parentGameObject) : Component(OwningGameObject), mPosition(position), mParentGameObject(parentGameObject)
 {
+	mParentGameObject->GetTransform()->AddChild(OwningGameObject);
 }
 
 ComponentTypes Transform::GetType()
@@ -30,6 +32,16 @@ void Transform::SetPosition(exVector3 position)
 GameObject* Transform::GetParent()
 {
 	return mParentGameObject;
+}
+
+void Transform::AddChild(GameObject* child)
+{
+	mChildrenGameObjects.push_back(child);
+}
+
+std::vector<GameObject*> Transform::GetChildren()
+{
+	return mChildrenGameObjects;
 }
 
 exVector3 Transform::GetPosition() { return mPosition; }

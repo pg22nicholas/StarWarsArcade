@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+#include <vector>
 #include "Game/Private/exVector3.h"
 
 class Transform :public Component
@@ -23,11 +24,14 @@ public:
 
 	void SetPosition(exVector3 position);
 	GameObject* GetParent();
+	void AddChild(GameObject* child);
+	std::vector<GameObject*> GetChildren();
 
 private:
 
 	exVector3 mPosition;
 	GameObject* mParentGameObject;
+	std::vector<GameObject*> mChildrenGameObjects;
 	exVector3 mForward = exVector3(0, 0, 1);
 	exVector3 mUp = exVector3(0, -1, 0);
 };

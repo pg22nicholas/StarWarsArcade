@@ -4,7 +4,7 @@
 #include "Transform.h"
 #include "Bounds.h"
 
-enum ColorTypes;
+enum class ColorTypes;
 
 class ShapeComponent : public Component
 {
@@ -23,7 +23,7 @@ protected:
 	exColor mC;
 };
 
-enum ColorTypes {
+enum class ColorTypes {
 	RED,
 	GREEN,
 	BLUE

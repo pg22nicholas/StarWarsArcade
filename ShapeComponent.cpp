@@ -27,19 +27,19 @@ void ShapeComponent::SetColor(ColorTypes colorType)
 {
 	switch (colorType)
 	{
-	case RED:
+	case ColorTypes::RED:
 		mC.mColor[0] = 255;
 		mC.mColor[1] = 0;
 		mC.mColor[2] = 0;
 		mC.mColor[3] = 255;
 		break;
-	case GREEN:
+	case ColorTypes::GREEN:
 		mC.mColor[0] = 0;
 		mC.mColor[1] = 255;
 		mC.mColor[2] = 0;
 		mC.mColor[3] = 255;
 		break;
-	case BLUE:
+	case ColorTypes::BLUE:
 		mC.mColor[0] = 0;
 		mC.mColor[1] = 0;
 		mC.mColor[2] = 255;

@@ -45,6 +45,7 @@ public:
 
 	exVector3 Normalize() {
 		float magnitude = sqrtf(powf(x, 2) + powf(y, 2) + powf(z, 2));
+		if (magnitude == 0) return exVector3::Zero();
 		return exVector3(x / magnitude, y / magnitude, z / magnitude);
 	}
 

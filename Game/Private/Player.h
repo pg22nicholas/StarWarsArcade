@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "PhysicsComponent.h"
 #include "ControllerComponent.h"
+#include "HealthComponent.h"
 #include "Utils.h"
 #include "Reticle.h"
 

@@ -90,9 +90,11 @@
     </ClInclude>
     <ClInclude Include="ReticleController.h" />
     <ClInclude Include="Reticle.h" />
-    <ClInclude Include="MovementComponent.h" />
     <ClInclude Include="ControllerComponent.h" />
     <ClInclude Include="PlayerController.h" />
+    <ClInclude Include="HealthComponent.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="AttackComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">
@@ -149,13 +151,19 @@
     <ClCompile Include="Reticle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MovementComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ControllerComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="PlayerController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

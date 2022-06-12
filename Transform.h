@@ -29,6 +29,6 @@ private:
 	exVector3 mPosition;
 	GameObject* mParentGameObject;
 	exVector3 mForward = exVector3(0, 0, 1);
-	exVector3 mUp = exVector3(0, 1, 0);
+	exVector3 mUp = exVector3(0, -1, 0);
 };
 

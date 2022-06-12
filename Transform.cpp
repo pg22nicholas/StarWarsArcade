@@ -53,5 +53,5 @@ exVector3 Transform::GetUp()
 
 exVector3 Transform::GetRight()
 {
-	return exVector3::Cross(mUp, mForward);
+	return exVector3::Cross(mForward, mUp);
 }

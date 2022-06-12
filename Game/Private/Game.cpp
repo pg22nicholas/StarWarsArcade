@@ -97,7 +97,6 @@ void MyGame::OnEventsConsumed()
 	for (ControllerComponent* controller : ControllerComponent::AllGameControllerComponents) {
 		controller->ReadInput(pState);
 	}
-
 }
 
 void MyGame::Render()

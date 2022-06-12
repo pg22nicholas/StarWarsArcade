@@ -8,7 +8,8 @@ enum class ComponentTypes
 	Box,
 	Circle,
 	Controller,
-	Movement
+	Health,
+	Fire
 };
 
 class GameObject;

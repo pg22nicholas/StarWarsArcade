@@ -6,7 +6,7 @@
 
 Player::Player() : GameObject(Bounds::GetOrigin())
 {
-	mReticle = new Reticle();
+	mReticle = new Reticle(this);
 	mReticle->Initialize();
 }
 
@@ -15,6 +15,8 @@ void Player::Initialize()
 	// Player has no rendering capabilities
 	AddComponent(new PhysicsComponent(this, false, 0, 0, exVector3()));
 	AddComponent(new PlayerController(this));
+	AddComponent(new AttackComponent(this, 1, 0));
+	AddComponent(new HealthComponent(this, 10, 0));
 	// TODO: health, and stat components
 
 	GameObject::Initialize();

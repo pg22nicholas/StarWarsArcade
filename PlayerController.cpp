@@ -8,7 +8,6 @@ void PlayerController::ReadInput(const uint8_t* pState)
 	mPlayerInput |= pState[SDL_SCANCODE_S] << DOWN_INPUT;
 	mPlayerInput |= pState[SDL_SCANCODE_A] << LEFT_INPUT;
 	mPlayerInput |= pState[SDL_SCANCODE_D] << RIGHT_INPUT;
-	mPlayerInput |= pState[SDL_SCANCODE_SPACE] << FIRE_INPUT;
 
 	ParseInput();
 }

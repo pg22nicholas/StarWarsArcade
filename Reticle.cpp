@@ -1,6 +1,6 @@
 #include "Reticle.h"
 
-Reticle::Reticle(): GameObject(Bounds::GetOrigin()) {}
+Reticle::Reticle(GameObject* parent): GameObject(Bounds::GetOrigin(), parent) {}
 
 void Reticle::Initialize()
 {

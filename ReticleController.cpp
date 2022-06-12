@@ -9,6 +9,7 @@ void ReticleController::ReadInput(const uint8_t* pState)
 	mReticleInput |= pState[SDL_SCANCODE_DOWN] << DOWN_INPUT;
 	mReticleInput |= pState[SDL_SCANCODE_LEFT] << LEFT_INPUT;
 	mReticleInput |= pState[SDL_SCANCODE_RIGHT] << RIGHT_INPUT;
+	mReticleInput |= pState[SDL_SCANCODE_SPACE] << FIRE_INPUT;
 
 	ParseInput();
 }
@@ -33,6 +34,16 @@ void ReticleController::ParseInput()
 		velocity += transform->GetRight() * -1;
 	}
 
+	if ((mReticleInput & 1 << FIRE_INPUT) != 0) {
+		mOwningGameObject->GetTransform()->GetParent()->FindComponent<AttackComponent>(ComponentTypes::Attack)->Fire(GetAimDirection());
+	}
+
 	physicsComp->SetVelocity(velocity.Normalize() * mSpeed);
 	mReticleInput = 0;
+}
+
+exVector3 ReticleController::GetAimDirection()
+{
+	exVector3 gameObjectPosition = mOwningGameObject->GetTransform()->GetLocalPosition();
+	return exVector3(gameObjectPosition.x, gameObjectPosition.y, Bounds::zBounds).Normalize();
 }

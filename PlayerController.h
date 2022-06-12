@@ -6,7 +6,6 @@
 #define RIGHT_INPUT 1
 #define UP_INPUT 2
 #define DOWN_INPUT 3
-#define FIRE_INPUT 4
 
 class PlayerController :
     public ControllerComponent

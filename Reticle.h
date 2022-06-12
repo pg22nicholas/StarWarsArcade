@@ -10,10 +10,8 @@ class Reticle :
     public GameObject
 {
 public:
-	Reticle();
+	Reticle(GameObject* parent);
 
 	virtual void Initialize() override;
-
-	void ApplyMovement(MOVEMENT movement);
 };
 

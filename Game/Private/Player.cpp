@@ -2,7 +2,7 @@
 #include "Engine/Public/EngineInterface.h"
 #include "Game/Private/Utils.h"
 #include "Bounds.h"
-#include "ControllerComponent.h"
+#include "PlayerController.h"
 
 Player::Player() : GameObject(Bounds::GetOrigin())
 {
@@ -14,6 +14,7 @@ void Player::Initialize()
 {
 	// Player has no rendering capabilities
 	AddComponent(new PhysicsComponent(this, false, 0, 0, exVector3()));
+	AddComponent(new PlayerController(this));
 	// TODO: health, and stat components
 
 	GameObject::Initialize();

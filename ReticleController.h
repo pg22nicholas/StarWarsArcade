@@ -22,7 +22,7 @@ public:
 	virtual void ParseInput() override;
 
 private:
-	exVector3 GetAimingLocation();
+	exVector3 GetAimDirection();
 	int mReticleInput;
 	float mSpeed = 400;
 };

@@ -9,7 +9,7 @@ enum class ComponentTypes
 	Circle,
 	Controller,
 	Health,
-	Fire
+	Attack
 };
 
 class GameObject;

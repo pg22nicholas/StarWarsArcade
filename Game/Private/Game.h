@@ -49,7 +49,6 @@ private:
 
 	void						Render();
 	void						Update(float fDeltaT);
-	void						ProcessInputs();
 	Player*						mPlayer;
 
 };

@@ -12,8 +12,6 @@ public:
 	Player();
 
 	virtual void Initialize() override;
-
-	void ApplyMovement(MOVEMENT movement);
 	
 	Reticle* GetReticle();
 

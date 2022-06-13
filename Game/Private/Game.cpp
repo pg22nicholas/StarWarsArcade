@@ -111,17 +111,9 @@ void MyGame::Render()
 
 void MyGame::Update(float fDeltaT)
 {
-	//ProcessInputs();
 	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
 		physicsComponent->Update(fDeltaT);
 	}
-}
-
-void MyGame::ProcessInputs()
-{
-	// Send input to player
-	//PlayerManager::GetManager()->ReadInput(mInput);
-	mInput = 0;
 }
 
 //-----------------------------------------------------------------

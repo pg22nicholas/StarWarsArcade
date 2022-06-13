@@ -21,19 +21,6 @@ PlayerManager::~PlayerManager()
 	delete mPlayer;
 }
 
-
-// Read user input and apply to player if applicable
-void PlayerManager::ReadInput(int input)
-{
-	if (input & (int)INPUTS::LEFT) {
-		mPlayer->ApplyMovement(MOVEMENT::LEFT);
-	}
-	else if (input & (int)INPUTS::RIGHT) {
-		mPlayer->ApplyMovement(MOVEMENT::RIGHT);
-	} else 
-		mPlayer->ApplyMovement(MOVEMENT::NONE);
-}
-
 Player* PlayerManager::GetPlayer()
 {
 	return mPlayer;

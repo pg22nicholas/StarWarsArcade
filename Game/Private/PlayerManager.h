@@ -6,7 +6,6 @@ class PlayerManager
 public:
 	static PlayerManager* GetManager();
 
-	void ReadInput(int input);
 	Player* GetPlayer();
 
 private:

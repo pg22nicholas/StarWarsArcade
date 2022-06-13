@@ -56,6 +56,8 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 
 	mPlayer = new Player();
 	mPlayer->Initialize();
+
+	new EnemyShip();
 }
 
 //-----------------------------------------------------------------
@@ -112,6 +114,9 @@ void MyGame::Render()
 void MyGame::Update(float fDeltaT)
 {
 	//ProcessInputs();
+	for (GameObject* gameObject : GameObject::AllGameObjects) {
+		if (gameObject->IsExpired()) delete gameObject;
+	}
 	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
 		physicsComponent->Update(fDeltaT);
 	}

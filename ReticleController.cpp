@@ -1,6 +1,6 @@
 #include "ReticleController.h"
 
-ReticleController::ReticleController(GameObject* Owner) : ControllerComponent(Owner), mReticleInput(0) {}
+ReticleController::ReticleController(GameObject* Owner) : ControllerComponent(Owner), mReticleInput(0), bIsFireHeld(false) {}
 
 
 void ReticleController::ReadInput(const uint8_t* pState)
@@ -35,7 +35,13 @@ void ReticleController::ParseInput()
 	}
 
 	if ((mReticleInput & 1 << FIRE_INPUT) != 0) {
-		mOwningGameObject->GetTransform()->GetParent()->FindComponent<AttackComponent>(ComponentTypes::Attack)->Fire(GetAimDirection());
+		if (!bIsFireHeld) {
+			mOwningGameObject->GetTransform()->GetParent()->FindComponent<AttackComponent>(ComponentTypes::Attack)->Fire(GetAimDirection());
+			bIsFireHeld = true;
+		}
+	}
+	else {
+		bIsFireHeld = false;
 	}
 
 	physicsComp->SetVelocity(velocity.Normalize() * mSpeed);

@@ -48,7 +48,8 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 		float distX = pos1.x - pos2.x;
 		float distY = pos1.y - pos2.y;
 		float distance = sqrtf((distX * distX) + (distY * distY));
-		return distance <= radius1 + radius2;
+		bool zPlane = pos1.z == pos2.z;
+		return distance <= radius1 + radius2 && zPlane;
 	}
 	if (MyBoxComp != nullptr && OtherBoxComp != nullptr)
 	{
@@ -58,12 +59,13 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 		exVector3 box2 = OtherBoxComp->GetGameObject()->GetTransform()->GetPosition();
 		float box2H = OtherBoxComp->GetHeight();
 		float box2W = OtherBoxComp->GetWidth();
+		bool zPlane = box1.z == box2.z;
 
 		// AABB collision check
 		return (box1.x <= box2.x + box2W &&
 			box1.x + box1W >= box2.x &&
 			box1.y <= box2.y + box2H &&
-			box1H + box1.y >= box2.y);
+			box1H + box1.y >= box2.y) && zPlane;
 	}
 	if (MyCircleComp != nullptr && OtherBoxComp != nullptr)
 	{
@@ -102,8 +104,9 @@ bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, B
 	// calculate the corner of the square and check if the length is less than the radius
 	float cornerDistance_sq = ((circleDistance.x - boxWidth / 2) * (circleDistance.x - boxWidth / 2)) +
 		((circleDistance.y - boxHeight / 2) * (circleDistance.y - boxHeight / 2));
+	bool zPlane = circle.z == box.z;
 
-	return (cornerDistance_sq <= (circleRadius * circleRadius));
+	return (cornerDistance_sq <= (circleRadius * circleRadius)) && zPlane;
 }
 
 
@@ -112,6 +115,13 @@ void PhysicsComponent::Update(float pDeltaTime)
 	// Update position based on velocity
 	exVector3 currPos = mOwningGameObject->GetTransform()->GetPosition();
 	currPos += mVelocity * pDeltaTime;
+
+	// Probably should be setting up handles before we start doing more memory management
+	/*if (currPos.z > Bounds::zBounds) {
+		mOwningGameObject->Expire();
+		return;
+	}*/
+
 	mOwningGameObject->GetTransform()->SetPosition(currPos);
 
 	// notify collision listeners if collision occured

@@ -3,7 +3,7 @@
 #include "PhysicsComponent.h"
 #include "Game/Private/PlayerManager.h"
 
-Bullet::Bullet() : GameObject(exVector3(0, 0, 0), PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetGameObject())
+Bullet::Bullet() : GameObject(exVector3::Zero())
 {
 }
 

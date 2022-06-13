@@ -4,7 +4,7 @@
 #include "Bounds.h"
 #include "PlayerController.h"
 
-Player::Player() : GameObject(Bounds::GetOrigin())
+Player::Player() : GameObject(exVector3::Zero())
 {
 	mReticle = new Reticle(this);
 	mReticle->Initialize();

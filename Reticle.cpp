@@ -1,4 +1,5 @@
 #include "Reticle.h"
+#include "Bounds.h"
 
 Reticle::Reticle(GameObject* parent): GameObject(exVector3::Zero(), parent) {}
 

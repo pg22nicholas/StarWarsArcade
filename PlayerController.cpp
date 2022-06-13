@@ -46,8 +46,4 @@ void PlayerController::ParseInput()
 
 	physicsComp->SetVelocity(velocity.Normalize() * mSpeed);
 	mPlayerInput = 0;
-
-	
-
-	
 }

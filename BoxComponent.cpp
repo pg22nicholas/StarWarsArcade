@@ -1,6 +1,7 @@
 #include "BoxComponent.h"
 #include "GameObject.h"
 #include "Game/Private/PlayerManager.h"
+#include "RenderManager.h"
 
 
 class EngineInterface;
@@ -29,7 +30,7 @@ ComponentTypes BoxComponent::GetType()
 
 void BoxComponent::Render()
 {
-	exVector3 position = mOwningGameObject->GetTransform()->GetLocalPosition();
+	exVector3 position = RenderManager::GetManager()->GetRenderPosition(mOwningGameObject->GetTransform()->GetLocalPosition());
 
 	// keep local to player camera position
 	float x = position.x;

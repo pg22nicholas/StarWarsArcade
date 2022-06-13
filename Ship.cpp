@@ -3,7 +3,7 @@
 #include "PhysicsComponent.h"
 #include "Game/Private/PlayerManager.h"
 
-Ship::Ship() : GameObject(exVector3(0, 0, 0), PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetGameObject())
+Ship::Ship() : GameObject(exVector3(exVector3::Zero()))
 {
 }
 

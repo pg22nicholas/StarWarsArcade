@@ -152,6 +152,8 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ControllerComponent.h" />
     <ClInclude Include="EnemyShip.h" />
+    <ClInclude Include="GameObjectHandle.h" />
+    <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="HealthComponent.h" />
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="Projectile.h" />
@@ -185,6 +187,8 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ControllerComponent.cpp" />
     <ClCompile Include="EnemyShip.cpp" />
+    <ClCompile Include="GameObjectHandle.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="Projectile.cpp" />

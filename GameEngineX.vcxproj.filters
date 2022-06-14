@@ -97,6 +97,8 @@
     <ClInclude Include="AttackComponent.h" />
     <ClInclude Include="EnemyShip.h" />
     <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="GameObjectHandle.h" />
+    <ClInclude Include="GameObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">
@@ -172,10 +174,16 @@
       <Filter>Source Files\Game\Private</Filter>
     </ClCompile>
     <ClCompile Include="EnemyShip.cpp">
-		<Filter>Source Files</Filter>
-	</ClCompile>
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="RenderManager.cpp">
-		<Filter>Source Files</Filter>
-	</ClCompile>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectHandle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

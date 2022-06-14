@@ -1,30 +1,29 @@
 #include "GameObject.h"
 #include "BoxComponent.h"
 
-std::vector<GameObject*> GameObject::AllGameObjects;
-GameObject::GameObject() 
+GameObject::GameObject():mID(GameObjectManager::GetInstance()->GenerateID())
 {
 	mTransform = new Transform(this);
 	AddComponent(mTransform);
-	AllGameObjects.push_back(this);
+	GameObjectManager::GetInstance()->RegisterGameObject(this);
 }
-GameObject::GameObject(exVector3 startingPosition)
+GameObject::GameObject(exVector3 startingPosition) :mID(GameObjectManager::GetInstance()->GenerateID())
 {
 	mTransform = new Transform(this, startingPosition);
 	AddComponent(mTransform);
-	AllGameObjects.push_back(this);
+	GameObjectManager::GetInstance()->RegisterGameObject(this);
 }
-GameObject::GameObject(GameObject* parent)
+GameObject::GameObject(GameObject* parent) :mID(GameObjectManager::GetInstance()->GenerateID())
 {
 	mTransform = new Transform(this, parent);
 	AddComponent(mTransform);
-	AllGameObjects.push_back(this);
+	GameObjectManager::GetInstance()->RegisterGameObject(this);
 }
-GameObject::GameObject(exVector3 startingPosition, GameObject* parent)
+GameObject::GameObject(exVector3 startingPosition, GameObject* parent) :mID(GameObjectManager::GetInstance()->GenerateID())
 {
 	mTransform = new Transform(this, startingPosition, parent);
 	AddComponent(mTransform);
-	AllGameObjects.push_back(this);
+	GameObjectManager::GetInstance()->RegisterGameObject(this);
 }
 // Destroyiing all the Componetns linked to Our Game Object.
 GameObject::~GameObject()
@@ -45,7 +44,7 @@ GameObject::~GameObject()
 		IterationComponent->Destroy();
 		delete IterationComponent;
 	}
-	GameObject::AllGameObjects.erase(std::remove(GameObject::AllGameObjects.begin(), GameObject::AllGameObjects.end(), this), GameObject::AllGameObjects.end());
+	GameObjectManager::GetInstance()->DeregisterGameObject(this);
 }
 
 // Initializing all the Components
@@ -70,6 +69,11 @@ bool GameObject::IsExpired()
 void GameObject::Expire()
 {
 	bIsExpired = true;
+}
+
+int GameObject::GetID()
+{
+	return mID;
 }
 
 

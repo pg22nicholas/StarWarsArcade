@@ -37,6 +37,10 @@ MyGame::MyGame()
 
 MyGame::~MyGame()
 {
+	for (GameObjectHandle* handlePtr : GameObjectHandle::AllGameObjectHandles) {
+		if (handlePtr->IsValid()) delete handlePtr->Get();
+		delete handlePtr;
+	}
 }
 
 //-----------------------------------------------------------------
@@ -55,9 +59,10 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 	//bullet->Initialize();
 
 	mPlayer = new Player();
-	mPlayer->Initialize();
+	new GameObjectHandle(mPlayer->GetID());
 
-	new EnemyShip();
+	mPlayer->Initialize();
+	new GameObjectHandle((new EnemyShip())->GetID());
 }
 
 //-----------------------------------------------------------------
@@ -114,8 +119,12 @@ void MyGame::Render()
 void MyGame::Update(float fDeltaT)
 {
 	//ProcessInputs();
-	for (GameObject* gameObject : GameObject::AllGameObjects) {
-		if (gameObject->IsExpired()) delete gameObject;
+	for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
+		if (!gameObjectHandle->IsValid()) continue;
+		GameObject* gameObject = gameObjectHandle->Get();
+		if (gameObject->IsExpired()) {
+			delete gameObject;
+		}
 	}
 	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
 		physicsComponent->Update(fDeltaT);

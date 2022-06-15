@@ -118,7 +118,6 @@ void MyGame::Render()
 
 void MyGame::Update(float fDeltaT)
 {
-	//ProcessInputs();
 	for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
 		if (!gameObjectHandle->IsValid()) continue;
 		GameObject* gameObject = gameObjectHandle->Get();
@@ -129,13 +128,6 @@ void MyGame::Update(float fDeltaT)
 	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
 		physicsComponent->Update(fDeltaT);
 	}
-}
-
-void MyGame::ProcessInputs()
-{
-	// Send input to player
-	//PlayerManager::GetManager()->ReadInput(mInput);
-	mInput = 0;
 }
 
 //-----------------------------------------------------------------

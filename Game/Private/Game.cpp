@@ -16,7 +16,7 @@
 #include "CircleComponent.h"
 #include "ControllerComponent.h"
 #include "PlayerManager.h"
-
+#include "BoundsBorderGenerator.h"
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 
@@ -63,6 +63,8 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 
 	mPlayer->Initialize();
 	new GameObjectHandle((new EnemyShip())->GetID());
+
+	BoundsBorderGenerator::GenerateBounds();
 }
 
 //-----------------------------------------------------------------
@@ -118,7 +120,6 @@ void MyGame::Render()
 
 void MyGame::Update(float fDeltaT)
 {
-	//ProcessInputs();
 	for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
 		if (!gameObjectHandle->IsValid()) continue;
 		GameObject* gameObject = gameObjectHandle->Get();
@@ -129,13 +130,6 @@ void MyGame::Update(float fDeltaT)
 	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
 		physicsComponent->Update(fDeltaT);
 	}
-}
-
-void MyGame::ProcessInputs()
-{
-	// Send input to player
-	//PlayerManager::GetManager()->ReadInput(mInput);
-	mInput = 0;
 }
 
 //-----------------------------------------------------------------

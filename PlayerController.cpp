@@ -1,4 +1,6 @@
 #include "PlayerController.h"
+#include "Bounds.h"
+#include <algorithm>
 
 PlayerController::PlayerController(GameObject* Owner) : ControllerComponent (Owner), mPlayerInput(0) {}
 
@@ -14,6 +16,16 @@ void PlayerController::ReadInput(const uint8_t* pState)
 
 void PlayerController::ParseInput()
 {
+	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();
+	if (position.y > Bounds::YBounds)
+		mOwningGameObject->GetTransform()->SetPosition(exVector3(position.x, Bounds::YBounds, position.z));
+	if (position.y < -Bounds::YBounds) 
+		mOwningGameObject->GetTransform()->SetPosition(exVector3(position.x, -Bounds::YBounds, position.z));
+	if (position.x > Bounds::xBounds) 
+		mOwningGameObject->GetTransform()->SetPosition(exVector3(Bounds::xBounds, position.y, position.z));
+	if (position.x < -Bounds::xBounds) 
+		mOwningGameObject->GetTransform()->SetPosition(exVector3(-Bounds::xBounds, position.y, position.z));
+
 	PhysicsComponent* physicsComp = mOwningGameObject->FindComponent<PhysicsComponent>(ComponentTypes::Physics);
 	Transform* transform = mOwningGameObject->GetTransform();
 	exVector3 velocity = exVector3::Zero();

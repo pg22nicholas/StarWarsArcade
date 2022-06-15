@@ -2,6 +2,8 @@
 #include "Engine/Public/EngineTypes.h"
 #include <math.h>
 
+# define M_PI           3.14159265358979323846  /* pi */
+
 class exVector3
 {
 public:
@@ -59,6 +61,15 @@ public:
 		vec.y = y;
 		return vec;
 	}
+
+	exVector3 RotateAroundZ(float degrees) {
+		float radians = DegToRad * degrees;
+		float newX = x * cos(radians) - y * sin(radians);
+		float newY = x * sin(radians) + y * cos(radians);
+		return exVector3(newX, newY, z);
+	}
+
+	float DegToRad = M_PI / 180;
 	
 	float x;
 	float y;

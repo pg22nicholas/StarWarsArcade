@@ -8,8 +8,7 @@ class EnemyShip :
 {
 public:
 	EnemyShip();
-
-	EnemyShip(exVector3 location);
+	EnemyShip(exVector3 location, exVector3 direction);
 
 	virtual void Initialize() override;
 };

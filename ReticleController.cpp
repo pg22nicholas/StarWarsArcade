@@ -36,8 +36,8 @@ void ReticleController::ParseInput()
 
 	if ((mReticleInput & 1 << FIRE_INPUT) != 0) {
 		if (!bIsFireHeld) {
-			mOwningGameObject->GetTransform()->GetParent()->FindComponent<AttackComponent>(ComponentTypes::Attack)->Fire(GetAimDirection());
 			bIsFireHeld = true;
+			mOwningGameObject->GetTransform()->GetParent()->FindComponent<AttackComponent>(ComponentTypes::Attack)->Fire(GetAimDirection());
 		}
 	}
 	else {

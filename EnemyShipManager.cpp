@@ -23,9 +23,12 @@ void EnemyShipManager::Update(float deltaTime)
 	if (mDurationRemaining <= 0) {
 		// TODO: Spawn new ship 
 		exVector3 spawnLocation = FindValidSpawnLocation();
+		
+		// Send enemy ship in directly roughly towards player
+		exVector3 vecToPlayer = ((PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetPosition() - spawnLocation) + exVector3(0, 0, 30))
+									.RotateAroundZ(rand() & (mRotationNoise * 2) - mRotationNoise)
+									.Normalize() * 100;
 
-		exVector3 vecToPlayer = (PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetPosition() - spawnLocation) * .15f + exVector3(0, 0, 1) * 4;
-		vecToPlayer.Normalize();
 		mEnemyShips.push_back(new GameObjectHandle((new EnemyShip(spawnLocation, vecToPlayer))->GetID()));
 
 		PRINT("Spawn new ship");

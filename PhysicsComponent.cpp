@@ -48,8 +48,8 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 		float distX = pos1.x - pos2.x;
 		float distY = pos1.y - pos2.y;
 		float distance = sqrtf((distX * distX) + (distY * distY));
-		bool zPlane = pos1.z == pos2.z;
-		return distance <= radius1 + radius2 && zPlane;
+		bool zPlane = (pos1.z == pos2.z);
+		return (distance <= radius1 + radius2 && zPlane);
 	}
 	if (MyBoxComp != nullptr && OtherBoxComp != nullptr)
 	{
@@ -59,13 +59,13 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 		exVector3 box2 = OtherBoxComp->GetGameObject()->GetTransform()->GetPosition();
 		float box2H = OtherBoxComp->GetHeight();
 		float box2W = OtherBoxComp->GetWidth();
-		bool zPlane = box1.z == box2.z;
+		bool zPlane = (box1.z == box2.z);
 
 		// AABB collision check
-		return (box1.x <= box2.x + box2W &&
+		return ((box1.x <= box2.x + box2W &&
 			box1.x + box1W >= box2.x &&
 			box1.y <= box2.y + box2H &&
-			box1H + box1.y >= box2.y) && zPlane;
+			box1H + box1.y >= box2.y) && zPlane);
 	}
 	if (MyCircleComp != nullptr && OtherBoxComp != nullptr)
 	{
@@ -96,17 +96,19 @@ bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, B
 	if (circleDistance.x > (boxWidth / 2 + circleRadius)) { return false; }
 	if (circleDistance.y > (boxHeight / 2 + circleRadius)) { return false; }
 
+
+	bool zPlane = (abs(circle.z - box.z) <= 10);
 	// circle center inside the box
-	if (circleDistance.x <= (boxWidth / 2)) { return true; }
-	if (circleDistance.y <= (boxHeight / 2)) { return true; }
+	if (circleDistance.x <= (boxWidth / 2)) { return zPlane; }
+	if (circleDistance.y <= (boxHeight / 2)) { return zPlane; }
 
 	// Check for intersection on the corner of the square
 	// calculate the corner of the square and check if the length is less than the radius
 	float cornerDistance_sq = ((circleDistance.x - boxWidth / 2) * (circleDistance.x - boxWidth / 2)) +
 		((circleDistance.y - boxHeight / 2) * (circleDistance.y - boxHeight / 2));
-	bool zPlane = circle.z == box.z;
 
-	return (cornerDistance_sq <= (circleRadius * circleRadius)) && zPlane;
+
+	return ((cornerDistance_sq <= (circleRadius * circleRadius)) && zPlane);
 }
 
 

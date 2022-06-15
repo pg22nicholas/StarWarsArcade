@@ -23,6 +23,7 @@ private:
 	float mDurationRemaining = 0;
 
 	exVector3 FindValidSpawnLocation();
+	int GetRandBetweenValues(int a, int b);
 
 	static EnemyShipManager* sInstance;
 };

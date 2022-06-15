@@ -38,7 +38,9 @@ bool GameObjectManager::Exist(GameObject* objectToCheck)
 
 int GameObjectManager::GenerateID()
 {
-    return mGameObjectMap.size();
+    return mGOCounter++;
 }
 
-GameObjectManager::GameObjectManager() {}
+GameObjectManager::GameObjectManager() {
+    mGOCounter = 0;
+}

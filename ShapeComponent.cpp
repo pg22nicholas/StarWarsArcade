@@ -1,6 +1,6 @@
 #include "ShapeComponent.h"
 
-ShapeComponent::ShapeComponent(GameObject* Owner) :Component(Owner)
+ShapeComponent::ShapeComponent(GameObject* Owner, bool isBackground) :Component(Owner), bIsBackground(isBackground)
 {
 	mC.mColor[0] = 0;
 	mC.mColor[1] = 255;

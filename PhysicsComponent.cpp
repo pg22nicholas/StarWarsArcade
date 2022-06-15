@@ -39,10 +39,10 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent, bool
 	if (MyCircleComp != nullptr && OtherCircleComp != nullptr)
 	{
 		exVector3 pos1 = MyCircleComp->GetGameObject()->GetTransform()->GetPosition();
-		float radius1 = MyCircleComp->GetRadius();
+		float radius1 = MyCircleComp->GetRadius() * Bounds::zSizePercentage(pos1.z);
 		
 		exVector3 pos2 = OtherCircleComp->GetGameObject()->GetTransform()->GetPosition();
-		float radius2 = OtherCircleComp->GetRadius();
+		float radius2 = OtherCircleComp->GetRadius() * Bounds::zSizePercentage(pos2.z);
 
 		// circles collision check using radius and distance
 		float distX = pos1.x - pos2.x;
@@ -54,11 +54,11 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent, bool
 	if (MyBoxComp != nullptr && OtherBoxComp != nullptr)
 	{
 		exVector3 box1 = MyBoxComp->GetGameObject()->GetTransform()->GetPosition();
-		float box1H = MyBoxComp->GetHeight();
-		float box1W = MyBoxComp->GetWidth();
+		float box1H = MyBoxComp->GetHeight() * Bounds::zSizePercentage(box1.z);
+		float box1W = MyBoxComp->GetWidth() * Bounds::zSizePercentage(box1.z);
 		exVector3 box2 = OtherBoxComp->GetGameObject()->GetTransform()->GetPosition();
-		float box2H = OtherBoxComp->GetHeight();
-		float box2W = OtherBoxComp->GetWidth();
+		float box2H = OtherBoxComp->GetHeight() * Bounds::zSizePercentage(box2.z);
+		float box2W = OtherBoxComp->GetWidth() * Bounds::zSizePercentage(box2.z);
 		bool zPlane = ((box1.z == box2.z) || ignoreZ);
 
 		// AABB collision check
@@ -82,11 +82,11 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent, bool
 // Collision check for a square against a circle
 bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, BoxComponent* boxComp, bool ignoreZ)
 {
-	exVector3 circle = circleComp->GetGameObject()->GetTransform()->GetPosition();
-	float circleRadius = circleComp->GetRadius();
-	exVector3 box = boxComp->GetGameObject()->GetTransform()->GetPosition();
-	float boxHeight = boxComp->GetHeight();
-	float boxWidth = boxComp->GetWidth();
+	exVector3 circle = circleComp->GetGameObject()->GetTransform()->GetLocalPosition();
+	float circleRadius = circleComp->GetRadius() * Bounds::zSizePercentage(circle.z);
+	exVector3 box = boxComp->GetGameObject()->GetTransform()->GetLocalPosition();
+	float boxHeight = boxComp->GetHeight() * Bounds::zSizePercentage(circle.z);
+	float boxWidth = boxComp->GetWidth() * Bounds::zSizePercentage(circle.z);
 
 	exVector3 circleDistance;
 	circleDistance.x = abs(circle.x - box.x);

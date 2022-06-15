@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "GameObjectHandle.h"
+class exVector3;
 
 class EnemyShipManager
 {
@@ -17,8 +18,11 @@ private:
 
 	const int mMinTimeSpawn = 1;
 	const int mMaxTimeSpawn = 5;
+	const float mAreaNeededToSpawn = 50;
 
 	float mDurationRemaining = 0;
+
+	exVector3 FindValidSpawnLocation();
 
 	static EnemyShipManager* sInstance;
 };

@@ -24,7 +24,9 @@ void EnemyShipManager::Update(float deltaTime)
 		// TODO: Spawn new ship 
 		exVector3 spawnLocation = FindValidSpawnLocation();
 
-		mEnemyShips.push_back(new GameObjectHandle((new EnemyShip(spawnLocation))->GetID()));
+		exVector3 vecToPlayer = (PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetPosition() - spawnLocation) * .15f + exVector3(0, 0, 1) * 4;
+		vecToPlayer.Normalize();
+		mEnemyShips.push_back(new GameObjectHandle((new EnemyShip(spawnLocation, vecToPlayer))->GetID()));
 
 		PRINT("Spawn new ship");
 		// reset counter

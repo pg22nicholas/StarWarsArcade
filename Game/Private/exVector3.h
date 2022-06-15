@@ -59,6 +59,12 @@ public:
 		vec.y = y;
 		return vec;
 	}
+
+	exVector3 RotateAroundZ(float degrees) {
+		float newX = x * cos(degrees) - y * sin(degrees);
+		float newY = x * sin(degrees) + y * cos(degrees);
+		return exVector3(newX, newY, z);
+	}
 	
 	float x;
 	float y;

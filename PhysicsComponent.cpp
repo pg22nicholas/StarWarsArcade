@@ -119,10 +119,10 @@ void PhysicsComponent::Update(float pDeltaTime)
 	currPos += mVelocity * pDeltaTime;
 
 	// Probably should be setting up handles before we start doing more memory management
-	/*if (currPos.z > Bounds::zBounds) {
+	if (currPos.z > Bounds::zBounds) {
 		mOwningGameObject->Expire();
 		return;
-	}*/
+	}
 
 	mOwningGameObject->GetTransform()->SetPosition(currPos);
 

@@ -15,6 +15,7 @@ public:
 	int GenerateID();
 
 private:
+	int mGOCounter;
 	std::map<int, GameObject*> mGameObjectMap;
 	GameObjectManager();
 	static GameObjectManager* sInstance;

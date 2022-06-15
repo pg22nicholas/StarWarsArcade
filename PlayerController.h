@@ -15,6 +15,7 @@ public:
 
 	virtual void ReadInput(const uint8_t* pState) override;
 	virtual void ParseInput() override;
+	void Update(float deltaTime) override;
 
 private:
 	int mPlayerInput;

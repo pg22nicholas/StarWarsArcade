@@ -18,6 +18,8 @@ void BoxComponent::Initialize()
 	BoxComponent::AllGameBoxComponents.push_back(this);
 }
 
+void BoxComponent::Update(float deltaTime) {}
+
 void BoxComponent::Destroy()
 {
 	BoxComponent::AllGameBoxComponents.erase(std::remove(BoxComponent::AllGameBoxComponents.begin(), BoxComponent::AllGameBoxComponents.end(), this), BoxComponent::AllGameBoxComponents.end());

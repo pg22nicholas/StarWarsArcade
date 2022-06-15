@@ -9,6 +9,7 @@ public:
 	CircleComponent(GameObject* Owner, float radius, bool isFilled = true);
 	CircleComponent(GameObject* Owner, float radius, exColor color, bool isFilled = true);
 	virtual void Initialize() override;
+	virtual void Update(float deltaTime) override;
 	virtual void Destroy() override;
 	virtual ComponentTypes GetType() override;
 	float GetRadius();

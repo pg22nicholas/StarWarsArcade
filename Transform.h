@@ -26,6 +26,7 @@ public:
 	GameObject* GetParent();
 	void AddChild(GameObject* child);
 	std::vector<GameObject*> GetChildren();
+	void Update(float deltaTime) override;
 
 private:
 

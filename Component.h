@@ -22,6 +22,7 @@ public:
 	~Component();
 
 	virtual void Initialize();
+	virtual void Update(float deltaTime) = 0;					
 	virtual void Destroy();
 	virtual ComponentTypes GetType();
 	GameObject* GetGameObject();

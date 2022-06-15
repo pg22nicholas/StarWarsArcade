@@ -15,3 +15,7 @@ void AttackComponent::Fire(exVector3 target)
 		new GameObjectHandle((new Projectile(turretPosition, direction, ColorTypes::RED, mTeam, mDamage))->GetID());
 	}
 }
+
+void AttackComponent::Update(float deltaTime)
+{
+}

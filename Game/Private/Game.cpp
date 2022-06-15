@@ -53,17 +53,8 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 
 	mFontID = mEngine->LoadFont( "afternight.ttf", 32 );
 
-	//Ship* ship = new Ship();
-	//ship->Initialize();
-
-	//Bullet* bullet = new Bullet();
-	//bullet->Initialize();
-
 	mPlayer = new Player();
 	new GameObjectHandle(mPlayer->GetID());
-
-	mPlayer->Initialize();
-	new GameObjectHandle((new EnemyShip())->GetID());
 
 	BoundsBorderGenerator::GenerateBounds();
 }

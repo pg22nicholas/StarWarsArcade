@@ -101,6 +101,8 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="BoundsBorderGenerator.h" />
     <ClInclude Include="EnemyShipManager.h" />
+    <ClInclude Include="Skybox.h" />
+    <ClInclude Include="Star.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">
@@ -191,6 +193,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EnemyShipManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Star.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -18,6 +18,7 @@
 #include "PlayerManager.h"
 #include "BoundsBorderGenerator.h"
 #include "EnemyShipManager.h"
+#include "Skybox.h"
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 
@@ -61,6 +62,8 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 
 	mPlayer = new Player();
 	new GameObjectHandle(mPlayer->GetID());
+
+	new GameObjectHandle((new Skybox())->GetID());
 
 	mPlayer->Initialize();
 	new GameObjectHandle((new EnemyShip())->GetID());

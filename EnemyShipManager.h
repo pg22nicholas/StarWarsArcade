@@ -19,6 +19,8 @@ private:
 	const int mMinTimeSpawn = 1;
 	const int mMaxTimeSpawn = 5;
 	const float mAreaNeededToSpawn = 50;
+	// Rotation noise around z axis so enemy ship not always shooting directly at player
+	const int mRotationNoise = 25;	
 
 	float mDurationRemaining = 0;
 

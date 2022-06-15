@@ -18,12 +18,14 @@ public:
 	virtual void Destroy() override;
 	virtual ComponentTypes GetType() override;
 
-	bool IsColliding(PhysicsComponent* OtherPhysicsComponent);
+	bool IsColliding(PhysicsComponent* OtherPhysicsComponent, bool ignoreZ = false);
 
 	virtual void Update(float pDeltaTime);
 
 	exVector3 GetVelocity();
 	void SetVelocity(exVector3 velocity);
+
+	GameObject* Raycast();
 
 private:
 
@@ -34,7 +36,7 @@ private:
 	exVector3 mVelocity;
 	bool bIsCollisionEnabled;
 
-	bool CircleSquareCollisionCheck(CircleComponent* circle, BoxComponent* box);
+	bool CircleSquareCollisionCheck(CircleComponent* circle, BoxComponent* box, bool ignoreZ);
 
 public:
 

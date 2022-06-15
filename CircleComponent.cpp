@@ -43,5 +43,5 @@ void CircleComponent::Render()
 		AccessEngine()->DrawCircle(position.getExVector2(), mRadius * zPercent, mC, 0);
 	else
 
-		AccessEngine()->DrawLineCircle(position.getExVector2(), mRadius * zPercent, mC, 0);
+		AccessEngine()->DrawLineCircle(position.getExVector2(), mRadius * zPercent, mC, position.z);
 }

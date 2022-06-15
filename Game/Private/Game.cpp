@@ -16,7 +16,7 @@
 #include "CircleComponent.h"
 #include "ControllerComponent.h"
 #include "PlayerManager.h"
-
+#include "BoundsBorderGenerator.h"
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 
@@ -63,6 +63,8 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 
 	mPlayer->Initialize();
 	new GameObjectHandle((new EnemyShip())->GetID());
+
+	BoundsBorderGenerator::GenerateBounds();
 }
 
 //-----------------------------------------------------------------

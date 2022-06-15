@@ -9,5 +9,8 @@ public:
 	Skybox();
 
 	virtual void Initialize() override;
+
+private:
+	const int kNumStars = 100;
 };
 

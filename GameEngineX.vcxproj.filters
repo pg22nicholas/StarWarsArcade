@@ -99,6 +99,7 @@
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="GameObjectHandle.h" />
     <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="BoundsBorderGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Private\Main.cpp">
@@ -183,6 +184,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameObjectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundsBorderGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

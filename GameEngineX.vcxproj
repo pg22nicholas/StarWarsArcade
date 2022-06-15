@@ -145,6 +145,7 @@
     <ClInclude Include="AttackComponent.h" />
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Bounds.h" />
+    <ClInclude Include="BoundsBorderGenerator.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="BoxComponent.h" />
     <ClInclude Include="Bullet.h" />
@@ -180,6 +181,7 @@
     <ClCompile Include="AttackComponent.cpp" />
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bounds.cpp" />
+    <ClCompile Include="BoundsBorderGenerator.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="BoxComponent.cpp" />
     <ClCompile Include="Bullet.cpp" />

@@ -18,6 +18,7 @@
 #include "PlayerManager.h"
 #include "BoundsBorderGenerator.h"
 #include "EnemyShipManager.h"
+#include "Skybox.h"
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 
@@ -53,9 +54,7 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 
 	mFontID = mEngine->LoadFont( "afternight.ttf", 32 );
 
-	mPlayer = new Player();
-	new GameObjectHandle(mPlayer->GetID());
-	mPlayer->Initialize();
+	new GameObjectHandle((new Skybox())->GetID());
 
 	BoundsBorderGenerator::GenerateBounds();
 }

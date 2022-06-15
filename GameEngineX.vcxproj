@@ -176,6 +176,8 @@
     <ClInclude Include="Reticle.h" />
     <ClInclude Include="ShapeComponent.h" />
     <ClInclude Include="Ship.h" />
+    <ClInclude Include="Skybox.h" />
+    <ClInclude Include="Star.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +210,8 @@
     <ClCompile Include="Reticle.cpp" />
     <ClCompile Include="ShapeComponent.cpp" />
     <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="Skybox.cpp" />
+    <ClCompile Include="Star.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

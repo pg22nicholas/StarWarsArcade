@@ -12,8 +12,9 @@ PlayerManager* PlayerManager::GetManager()
 
 PlayerManager::PlayerManager()
 {
-	mPlayer = new Player();
-	mPlayer->Initialize();
+	Player* playerPtr = new Player();
+	playerPtr->Initialize();
+	mPlayer = new GameObjectHandle(playerPtr->GetID());
 }
 
 PlayerManager::~PlayerManager()
@@ -23,7 +24,10 @@ PlayerManager::~PlayerManager()
 
 Player* PlayerManager::GetPlayer()
 {
-	return mPlayer;
+	if (mPlayer->IsValid()) {
+		return dynamic_cast<Player*>(mPlayer->Get());
+	}
+	return nullptr;
 }
 
 PlayerManager* PlayerManager::sInstance = nullptr;

@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include "GameObjectHandle.h"
 
 class PlayerManager
 {
@@ -9,7 +10,7 @@ public:
 	Player* GetPlayer();
 
 private:
-	Player* mPlayer;
+	GameObjectHandle* mPlayer;
 
 	PlayerManager();
 	~PlayerManager();

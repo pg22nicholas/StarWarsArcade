@@ -12,7 +12,6 @@ public:
 
 private:
 
-	std::vector<GameObjectHandle*> mEnemyShips;
 	EnemyShipManager();
 	~EnemyShipManager();
 

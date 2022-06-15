@@ -9,7 +9,7 @@ enum class ColorTypes;
 class ShapeComponent : public Component
 {
 public:
-	ShapeComponent(GameObject* Owner);
+	ShapeComponent(GameObject* Owner, bool isBackground);
 
 	virtual void Initialize() override;
 	virtual void Destroy() override;
@@ -21,11 +21,14 @@ public:
 
 protected:
 	exColor mC;
+	bool bIsBackground;
 };
 
 enum class ColorTypes {
 	RED,
 	GREEN,
-	BLUE
+	BLUE,
+	BLACK,
+	WHITE
 };
 

@@ -18,7 +18,7 @@ private:
 	exVector3 mHeading;
 	ColorTypes mColor;
 	float mSpeed = 500;
-	float mRadius = 50;
+	float mRadius = 10;
 	float mDamage;
 	int mTeam;
 };

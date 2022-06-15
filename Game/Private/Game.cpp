@@ -17,6 +17,7 @@
 #include "ControllerComponent.h"
 #include "PlayerManager.h"
 #include "BoundsBorderGenerator.h"
+#include "EnemyShipManager.h"
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 
@@ -130,6 +131,8 @@ void MyGame::Update(float fDeltaT)
 	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
 		physicsComponent->Update(fDeltaT);
 	}
+
+	EnemyShipManager::GetManager()->Update(fDeltaT);
 }
 
 //-----------------------------------------------------------------

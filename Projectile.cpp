@@ -20,13 +20,13 @@ void Projectile::Initialize()
 
 void Projectile::OnCollision(PhysicsComponent* pCurrentComponent, PhysicsComponent* pOtherComponent)
 {
-	if (IsExpired()) return;
-	Expire();
 	if (FindComponent<PhysicsComponent>(ComponentTypes::Physics) != pCurrentComponent) return;
 	HealthComponent* otherHealth = pOtherComponent->GetGameObject()->FindComponent<HealthComponent>(ComponentTypes::Health);
 
 	if (otherHealth == nullptr) return;
 	if (!otherHealth->CanHit(mTeam)) return;
+	if (IsExpired()) return;
+	Expire();
 
 	otherHealth->TryDamage(mDamage, mTeam);
 }

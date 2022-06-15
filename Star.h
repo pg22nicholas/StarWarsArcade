@@ -9,5 +9,7 @@ public:
 	Star(exVector2 flatPosition, GameObject* parent);
 
 	virtual void Initialize() override;
+
+	static const float kSize;
 };
 

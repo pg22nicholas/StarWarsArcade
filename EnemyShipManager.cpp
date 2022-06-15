@@ -26,7 +26,7 @@ void EnemyShipManager::Update(float deltaTime)
 		
 		// Send enemy ship in directly roughly towards player
 		exVector3 vecToPlayer = ((PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetPosition() - spawnLocation) + exVector3(0, 0, 30))
-									.RotateAroundZ(rand() & (mRotationNoise * 2) - mRotationNoise)
+									.RotateAroundZ((float)(rand() & (mRotationNoise * 2) - mRotationNoise))
 									.Normalize() * 100;
 
 		new GameObjectHandle((new EnemyShip(spawnLocation, vecToPlayer))->GetID());
@@ -34,7 +34,7 @@ void EnemyShipManager::Update(float deltaTime)
 		PRINT("Spawn new ship");
 		// reset counter
 		int spawnTime = (rand() % (mMaxTimeSpawn - mMinTimeSpawn)) + mMinTimeSpawn;
-		mDurationRemaining = spawnTime;
+		mDurationRemaining = (float)spawnTime;
 	}
 }
 
@@ -61,18 +61,18 @@ exVector3 EnemyShipManager::FindValidSpawnLocation()
 		case 0:
 			if (playerPosition.y <= Bounds::YBounds - mAreaNeededToSpawn)
 			{
-				int randY = GetRandBetweenValues(playerPosition.y + kViewportHeight / 2, Bounds::YBounds + kViewportHeight / 2);
+				int randY = GetRandBetweenValues((int)playerPosition.y + kViewportHeight / 2, Bounds::YBounds + kViewportHeight / 2);
 				int randX = GetRandBetweenValues(-Bounds::xBounds - kViewportWidth / 2, Bounds::xBounds + kViewportWidth / 2);
-				return exVector3(randX, randY, 0);
+				return exVector3((float)randX, (float)randY, 0);
 			}
 			break;
 		// Try spawn above player
 		case 1:
 			if (playerPosition.y >= -Bounds::YBounds + mAreaNeededToSpawn)
 			{
-				int randY = GetRandBetweenValues(playerPosition.y - kViewportHeight / 2, -Bounds::YBounds - kViewportHeight / 2);
+				int randY = GetRandBetweenValues((int)playerPosition.y - kViewportHeight / 2, -Bounds::YBounds - kViewportHeight / 2);
 				int randX = GetRandBetweenValues(-Bounds::xBounds - kViewportWidth / 2, Bounds::xBounds + kViewportWidth / 2);
-				return exVector3(randX, randY, 0);
+				return exVector3((float)randX, (float)randY, 0);
 			}
 			break;
 		// Try spawn left of player
@@ -80,8 +80,8 @@ exVector3 EnemyShipManager::FindValidSpawnLocation()
 			if (playerPosition.x >= -Bounds::xBounds + mAreaNeededToSpawn)
 			{
 				int randY = GetRandBetweenValues(-Bounds::YBounds - kViewportHeight / 2, Bounds::YBounds + kViewportHeight / 2);
-				int randX = GetRandBetweenValues(playerPosition.x - kViewportWidth / 2, -Bounds::xBounds - kViewportWidth / 2);
-				return exVector3(randX, randY, 0);
+				int randX = GetRandBetweenValues((int)playerPosition.x - kViewportWidth / 2, -Bounds::xBounds - kViewportWidth / 2);
+				return exVector3((float)randX, (float)randY, 0);
 			}
 			break;
 		// Try spawn right of player
@@ -89,8 +89,8 @@ exVector3 EnemyShipManager::FindValidSpawnLocation()
 			if (playerPosition.x <= Bounds::xBounds - mAreaNeededToSpawn)
 			{
 				int randY = GetRandBetweenValues(-Bounds::YBounds - kViewportHeight / 2, Bounds::YBounds + kViewportHeight / 2);
-				int randX = GetRandBetweenValues(playerPosition.x + kViewportWidth / 2, Bounds::xBounds + kViewportWidth / 2);
-				return exVector3(randX, randY, 0);
+				int randX = GetRandBetweenValues((int)playerPosition.x + kViewportWidth / 2, Bounds::xBounds + kViewportWidth / 2);
+				return exVector3((float)randX, (float)randY, 0);
 			}
 			break;
 		default:

@@ -51,5 +51,9 @@ void ReticleController::ParseInput()
 exVector3 ReticleController::GetAimDirection()
 {
 	exVector3 gameObjectPosition = mOwningGameObject->GetTransform()->GetLocalPosition();
+	GameObject* RayCastTarget = mOwningGameObject->FindComponent<PhysicsComponent>(ComponentTypes::Physics)->Raycast();
+	if (RayCastTarget != nullptr) {
+		return exVector3(gameObjectPosition.x, gameObjectPosition.y, RayCastTarget->GetTransform()->GetPosition().z);
+	}
 	return exVector3(gameObjectPosition.x, gameObjectPosition.y, Bounds::zBounds);
 }

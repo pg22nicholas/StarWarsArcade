@@ -55,6 +55,7 @@ void MyGame::Initialize( exEngineInterface* pEngine )
 
 	mPlayer = new Player();
 	new GameObjectHandle(mPlayer->GetID());
+	mPlayer->Initialize();
 
 	BoundsBorderGenerator::GenerateBounds();
 }

@@ -26,6 +26,8 @@ protected:
 enum class ColorTypes {
 	RED,
 	GREEN,
-	BLUE
+	BLUE,
+	BLACK,
+	WHITE
 };
 

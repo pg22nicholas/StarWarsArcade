@@ -45,6 +45,18 @@ void ShapeComponent::SetColor(ColorTypes colorType)
 		mC.mColor[2] = 255;
 		mC.mColor[3] = 255;
 		break;
+	case ColorTypes::BLACK:
+		mC.mColor[0] = 0;
+		mC.mColor[1] = 0;
+		mC.mColor[2] = 0;
+		mC.mColor[3] = 255;
+		break;
+	case ColorTypes::WHITE:
+		mC.mColor[0] = 255;
+		mC.mColor[1] = 255;
+		mC.mColor[2] = 255;
+		mC.mColor[3] = 255;
+		break;
 	default:
 		break;
 	}

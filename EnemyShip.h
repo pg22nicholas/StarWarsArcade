@@ -9,6 +9,8 @@ class EnemyShip :
 public:
 	EnemyShip();
 
+	EnemyShip(exVector3 location);
+
 	virtual void Initialize() override;
 };
 

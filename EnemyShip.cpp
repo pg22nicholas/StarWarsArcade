@@ -6,6 +6,11 @@ EnemyShip::EnemyShip(): GameObject(exVector3(rand() % 800, rand() % 600, 50)) {
 	Initialize();
 }
 
+EnemyShip::EnemyShip(exVector3 location) : GameObject(location)
+{
+	Initialize();
+}
+
 void EnemyShip::Initialize()
 {
 

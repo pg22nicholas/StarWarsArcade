@@ -12,6 +12,6 @@ void AttackComponent::Fire(exVector3 target)
 	for(GameObject* turret: mTurrets) {
 		exVector3 turretPosition = turret->GetTransform()->GetLocalPosition();
 		exVector3 direction = (target - turretPosition).Normalize();
-		new Projectile(turretPosition, direction, ColorTypes::RED);
+		new GameObjectHandle((new Projectile(turretPosition, direction, ColorTypes::RED, mTeam, mDamage))->GetID());
 	}
 }

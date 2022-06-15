@@ -3,11 +3,11 @@
 #include "Component.h"
 #include "Engine/Public/EngineInterface.h"
 #include "Transform.h"
+#include "GameObjectManager.h"
 
 class GameObject
 {
 public:
-
 	GameObject();
 	GameObject(exVector3 startingPosition);
 	GameObject(GameObject* parent);
@@ -36,9 +36,15 @@ public:
 		return mTransform;
 	}
 
+	bool IsExpired();
+	void Expire();
+	int GetID();
+
 protected:
 	std::vector<Component*> mComponents;
 	Transform* mTransform;
+	bool bIsExpired = false;
+	int mID;
 
 private:
 

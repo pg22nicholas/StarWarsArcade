@@ -48,7 +48,7 @@ void BoxComponent::Render()
 	bottomRight.x = x + widthBasedOnZ / 2;
 	bottomRight.y = y + heightBasedOnZ / 2;
 
-	AccessEngine()->DrawBox(topLeft, bottomRight, mC, 0);
+	AccessEngine()->DrawBox(topLeft, bottomRight, mC, position.z);
 }
 
 float BoxComponent::GetWidth()

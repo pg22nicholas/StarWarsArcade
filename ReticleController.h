@@ -23,6 +23,7 @@ public:
 
 private:
 	exVector3 GetAimDirection();
+	bool bIsFireHeld;
 	int mReticleInput;
 	float mSpeed = 400;
 };

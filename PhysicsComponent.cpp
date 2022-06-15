@@ -29,7 +29,7 @@ ComponentTypes PhysicsComponent::GetType()
 	return ComponentTypes::Physics;
 }
 
-bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
+bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent, bool ignoreZ)
 {
 	BoxComponent* MyBoxComp = mOwningGameObject->FindComponent<BoxComponent>(ComponentTypes::Box);
 	CircleComponent* MyCircleComp = mOwningGameObject->FindComponent<CircleComponent>(ComponentTypes::Circle);
@@ -48,7 +48,8 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 		float distX = pos1.x - pos2.x;
 		float distY = pos1.y - pos2.y;
 		float distance = sqrtf((distX * distX) + (distY * distY));
-		return distance <= radius1 + radius2;
+		bool zPlane = ((pos1.z == pos2.z) || ignoreZ);
+		return (distance <= radius1 + radius2 && zPlane);
 	}
 	if (MyBoxComp != nullptr && OtherBoxComp != nullptr)
 	{
@@ -58,27 +59,28 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent)
 		exVector3 box2 = OtherBoxComp->GetGameObject()->GetTransform()->GetPosition();
 		float box2H = OtherBoxComp->GetHeight();
 		float box2W = OtherBoxComp->GetWidth();
+		bool zPlane = ((box1.z == box2.z) || ignoreZ);
 
 		// AABB collision check
-		return (box1.x <= box2.x + box2W &&
+		return ((box1.x <= box2.x + box2W &&
 			box1.x + box1W >= box2.x &&
 			box1.y <= box2.y + box2H &&
-			box1H + box1.y >= box2.y);
+			box1H + box1.y >= box2.y) && zPlane);
 	}
 	if (MyCircleComp != nullptr && OtherBoxComp != nullptr)
 	{
-		return CircleSquareCollisionCheck(MyCircleComp, OtherBoxComp);
+		return CircleSquareCollisionCheck(MyCircleComp, OtherBoxComp, ignoreZ);
 	}
 	if (MyBoxComp != nullptr && OtherCircleComp != nullptr)
 	{
-		return CircleSquareCollisionCheck(OtherCircleComp, MyBoxComp);
+		return CircleSquareCollisionCheck(OtherCircleComp, MyBoxComp, ignoreZ);
 	}
 
 	return false;
 }
 
 // Collision check for a square against a circle
-bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, BoxComponent* boxComp)
+bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, BoxComponent* boxComp, bool ignoreZ)
 {
 	exVector3 circle = circleComp->GetGameObject()->GetTransform()->GetPosition();
 	float circleRadius = circleComp->GetRadius();
@@ -94,16 +96,19 @@ bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, B
 	if (circleDistance.x > (boxWidth / 2 + circleRadius)) { return false; }
 	if (circleDistance.y > (boxHeight / 2 + circleRadius)) { return false; }
 
+
+	bool zPlane = ((abs(circle.z - box.z) <= 10) || ignoreZ);
 	// circle center inside the box
-	if (circleDistance.x <= (boxWidth / 2)) { return true; }
-	if (circleDistance.y <= (boxHeight / 2)) { return true; }
+	if (circleDistance.x <= (boxWidth / 2)) { return zPlane; }
+	if (circleDistance.y <= (boxHeight / 2)) { return zPlane; }
 
 	// Check for intersection on the corner of the square
 	// calculate the corner of the square and check if the length is less than the radius
 	float cornerDistance_sq = ((circleDistance.x - boxWidth / 2) * (circleDistance.x - boxWidth / 2)) +
 		((circleDistance.y - boxHeight / 2) * (circleDistance.y - boxHeight / 2));
 
-	return (cornerDistance_sq <= (circleRadius * circleRadius));
+
+	return ((cornerDistance_sq <= (circleRadius * circleRadius)) && zPlane);
 }
 
 
@@ -112,6 +117,13 @@ void PhysicsComponent::Update(float pDeltaTime)
 	// Update position based on velocity
 	exVector3 currPos = mOwningGameObject->GetTransform()->GetPosition();
 	currPos += mVelocity * pDeltaTime;
+
+	// Probably should be setting up handles before we start doing more memory management
+	/*if (currPos.z > Bounds::zBounds) {
+		mOwningGameObject->Expire();
+		return;
+	}*/
+
 	mOwningGameObject->GetTransform()->SetPosition(currPos);
 
 	// notify collision listeners if collision occured
@@ -144,6 +156,30 @@ exVector3 PhysicsComponent::GetVelocity()
 void PhysicsComponent::SetVelocity(exVector3 velocity)
 {
 	mVelocity = velocity;
+}
+
+GameObject* PhysicsComponent::Raycast()
+{
+	GameObject* result = nullptr;
+	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();
+	for (PhysicsComponent* PhysicsComponentIterator : mAllPhysicsComponents)
+	{
+		if (PhysicsComponentIterator == this)
+		{
+			continue;
+		}
+
+		if (IsColliding(PhysicsComponentIterator, true) && PhysicsComponentIterator->bIsCollisionEnabled)
+		{
+			GameObject* GOIterator = PhysicsComponentIterator->mOwningGameObject;
+			if (result == nullptr) result = GOIterator;
+			else if (exVector3::Distance(GOIterator->GetTransform()->GetPosition(), position) < exVector3::Distance(result->GetTransform()->GetPosition(), position)) {
+				result = GOIterator;
+			}
+		}
+	}
+
+	return result;
 }
 
 void PhysicsComponent::AddColissionEventLitsner(IPhysicsCollisionEvent* pEvent)

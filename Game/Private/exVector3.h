@@ -43,6 +43,10 @@ public:
 		return exVector3(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
 	}
 
+	static float Distance(const exVector3& a, const exVector3& b) {
+		return sqrtf(powf(a.x - b.x, 2) + powf(a.y - b.y, 2) + powf(a.z - b.z, 2));
+	}
+
 	exVector3 Normalize() {
 		float magnitude = sqrtf(powf(x, 2) + powf(y, 2) + powf(z, 2));
 		if (magnitude == 0) return exVector3::Zero();

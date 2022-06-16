@@ -3,6 +3,8 @@
 #include "PhysicsComponent.h"
 #include "HealthComponent.h"
 #include "BoxComponent.h"
+#include "CircleComponent.h"
+
 class EnemyShip :
     public GameObject
 {

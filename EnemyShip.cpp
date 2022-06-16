@@ -14,7 +14,8 @@ EnemyShip::EnemyShip(exVector3 location, exVector3 direction) : GameObject(locat
 
 void EnemyShip::Initialize()
 {
-	AddComponent(new BoxComponent(this, 100, 100));
+	AddComponent(new CircleComponent(this, 50));
+	AddComponent(new BoxComponent(this, 200, 25));
 	AddComponent(new HealthComponent(this, 6, 1));
 	GameObject::Initialize();
 }

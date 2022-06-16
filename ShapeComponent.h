@@ -4,6 +4,8 @@
 #include "Transform.h"
 #include "Bounds.h"
 
+class exColor;
+
 enum class ColorTypes;
 
 class ShapeComponent : public Component
@@ -18,6 +20,7 @@ public:
 	virtual void Render() = 0;
 
 	void SetColor(ColorTypes colorType);
+	void SetColor(exColor color);
 
 protected:
 	exColor mC;

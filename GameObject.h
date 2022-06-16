@@ -38,7 +38,7 @@ public:
 	}
 
 	bool IsExpired();
-	void Expire();
+	virtual void Expire();
 	int GetID();
 
 protected:

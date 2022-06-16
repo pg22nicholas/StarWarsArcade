@@ -1,5 +1,5 @@
 #include "ShapeComponent.h"
-
+#include "Engine/Public/EngineTypes.h"
 ShapeComponent::ShapeComponent(GameObject* Owner, bool isBackground) :Component(Owner), bIsBackground(isBackground)
 {
 	mC.mColor[0] = 0;
@@ -60,4 +60,9 @@ void ShapeComponent::SetColor(ColorTypes colorType)
 	default:
 		break;
 	}
+}
+
+void ShapeComponent::SetColor(exColor color)
+{
+	mC = color;
 }

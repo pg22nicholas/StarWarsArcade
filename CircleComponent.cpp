@@ -47,3 +47,8 @@ void CircleComponent::Render()
 
 		AccessEngine()->DrawLineCircle(position.getExVector2(), mRadius * zPercent, mC, (bIsBackground ? (Bounds::zBounds + 1) : position.z));
 }
+
+void CircleComponent::SetRadius(float radius)
+{
+	mRadius = radius;
+}

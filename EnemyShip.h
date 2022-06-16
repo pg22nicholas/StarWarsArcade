@@ -10,6 +10,9 @@ public:
 	EnemyShip();
 	EnemyShip(exVector3 location, exVector3 direction);
 
+
+	void Expire() override;
+
 	virtual void Initialize() override;
 };
 

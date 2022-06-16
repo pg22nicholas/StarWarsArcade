@@ -16,6 +16,8 @@ public:
 
 	virtual void Render();
 
+	void SetRadius(float radius);
+
 private:
 
 	float mRadius;

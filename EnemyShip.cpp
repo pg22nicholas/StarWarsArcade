@@ -1,4 +1,5 @@
 #include "EnemyShip.h"
+#include "Explosion.h"
 
 EnemyShip::EnemyShip(): GameObject(exVector3(rand() % 800, rand() % 600, 50)) {
 
@@ -10,6 +11,14 @@ EnemyShip::EnemyShip(exVector3 location, exVector3 direction) : GameObject(locat
 {
 	AddComponent(new PhysicsComponent(this, false, 0, 0, direction));
 	Initialize();
+}
+
+void EnemyShip::Expire()
+{
+	Explosion* explosion = new Explosion(GetTransform()->GetPosition());
+	new GameObjectHandle(explosion->GetID());
+	explosion->Initialize();
+	GameObject::Expire();
 }
 
 void EnemyShip::Initialize()

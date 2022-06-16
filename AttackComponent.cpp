@@ -1,6 +1,6 @@
 #include "AttackComponent.h"
 
-AttackComponent::AttackComponent(GameObject* Owner, float damage, int team, std::vector<GameObject*> turrets):Component(Owner), mDamage(damage), mTeam(team), mTurrets(turrets) {}
+AttackComponent::AttackComponent(GameObject* Owner, float damage, int team, const std::vector<GameObject*>& turrets):Component(Owner), mDamage(damage), mTeam(team), mTurrets(turrets) {}
 
 ComponentTypes AttackComponent::GetType()
 {

@@ -176,6 +176,7 @@
     <ClInclude Include="Reticle.h" />
     <ClInclude Include="ShapeComponent.h" />
     <ClInclude Include="Ship.h" />
+    <ClInclude Include="ShipWing.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="Transform.h" />
@@ -210,6 +211,7 @@
     <ClCompile Include="Reticle.cpp" />
     <ClCompile Include="ShapeComponent.cpp" />
     <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="ShipWing.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="Transform.cpp" />

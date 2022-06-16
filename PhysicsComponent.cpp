@@ -5,6 +5,7 @@
 #include "CircleComponent.h"
 #include <math.h> 
 
+const float PhysicsComponent::zOverlapRange = 30;
 PhysicsComponent::PhysicsComponent(GameObject* OwningGameObject, bool gravityEnabled, float gravityScale, float mass, exVector3 Velocity, bool collisionEnabled) :Component(OwningGameObject)
 {
 	bGravityEnabled = gravityEnabled;
@@ -48,7 +49,7 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent, bool
 		float distX = pos1.x - pos2.x;
 		float distY = pos1.y - pos2.y;
 		float distance = sqrtf((distX * distX) + (distY * distY));
-		bool zPlane = ((abs(pos1.z - pos2.z) <= 10) || ignoreZ);
+		bool zPlane = ((abs(pos1.z - pos2.z) <= zOverlapRange) || ignoreZ);
 		return (distance <= radius1 + radius2 && zPlane);
 	}
 	if (MyBoxComp != nullptr && OtherBoxComp != nullptr)
@@ -59,7 +60,7 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent, bool
 		exVector3 box2 = OtherBoxComp->GetGameObject()->GetTransform()->GetPosition();
 		float box2H = OtherBoxComp->GetHeight() * Bounds::zSizePercentage(box2.z);
 		float box2W = OtherBoxComp->GetWidth() * Bounds::zSizePercentage(box2.z);
-		bool zPlane = ((abs(box1.z - box2.z) <= 10) || ignoreZ);
+		bool zPlane = ((abs(box1.z - box2.z) <= zOverlapRange) || ignoreZ);
 
 		// AABB collision check
 		return ((box1.x <= box2.x + box2W &&
@@ -97,7 +98,7 @@ bool PhysicsComponent::CircleSquareCollisionCheck(CircleComponent* circleComp, B
 	if (circleDistance.y > (boxHeight / 2 + circleRadius)) { return false; }
 
 
-	bool zPlane = ((abs(circle.z - box.z) <= 10) || ignoreZ);
+	bool zPlane = ((abs(circle.z - box.z) <= zOverlapRange) || ignoreZ);
 	// circle center inside the box
 	if (circleDistance.x <= (boxWidth / 2)) { return zPlane; }
 	if (circleDistance.y <= (boxHeight / 2)) { return zPlane; }

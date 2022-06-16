@@ -33,6 +33,8 @@ private:
 	float mGravityScale;
 	float mMass;
 
+	static const float zOverlapRange;
+
 	exVector3 mVelocity;
 	bool bIsCollisionEnabled;
 

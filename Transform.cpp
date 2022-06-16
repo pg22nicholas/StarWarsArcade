@@ -44,6 +44,8 @@ std::vector<GameObject*> Transform::GetChildren()
 	return mChildrenGameObjects;
 }
 
+void Transform::Update(float deltaTime) {}
+
 exVector3 Transform::GetPosition() { return mPosition; }
 exVector3 Transform::GetLocalPosition() {
 

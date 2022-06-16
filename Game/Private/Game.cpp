@@ -124,8 +124,12 @@ void MyGame::CleanUp() {
 
 void MyGame::Update(float fDeltaT)
 {
-	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
-		physicsComponent->Update(fDeltaT);
+	for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
+		if (!gameObjectHandle->IsValid()) continue;
+		GameObject* gameObject = gameObjectHandle->Get();
+		if (!gameObject->IsExpired()) {
+			gameObject->Update(fDeltaT);
+		}
 	}
 
 	EnemyShipManager::GetManager()->Update(fDeltaT);

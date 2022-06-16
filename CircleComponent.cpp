@@ -18,6 +18,8 @@ void CircleComponent::Initialize()
 	CircleComponent::AllCircleComponents.push_back(this);
 }
 
+void CircleComponent::Update(float deltaTime) {}
+
 void CircleComponent::Destroy()
 {
 	CircleComponent::AllCircleComponents.erase(std::remove(CircleComponent::AllCircleComponents.begin(), CircleComponent::AllCircleComponents.end(), this), CircleComponent::AllCircleComponents.end());

@@ -10,6 +10,7 @@ public:
 	virtual ComponentTypes GetType() override;
 
 	void Fire(exVector3 heading);
+	virtual void Update(float deltaTime) override;
 
 private:
 	int mTeam;

@@ -48,6 +48,11 @@ void ReticleController::ParseInput()
 	mReticleInput = 0;
 }
 
+void ReticleController::Update(float deltaTime)
+{
+	// TODO: Read inputs here
+}
+
 exVector3 ReticleController::GetAimDirection()
 {
 	exVector3 gameObjectPosition = mOwningGameObject->GetTransform()->GetLocalPosition();

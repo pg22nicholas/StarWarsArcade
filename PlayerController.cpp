@@ -47,3 +47,8 @@ void PlayerController::ParseInput()
 	physicsComp->SetVelocity(velocity.Normalize() * mSpeed);
 	mPlayerInput = 0;
 }
+
+void PlayerController::Update(float deltaTime)
+{
+	// TODO: read inputs from here
+}

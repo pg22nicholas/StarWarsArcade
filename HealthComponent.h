@@ -12,6 +12,7 @@ public:
 	void TryDamage(float damage, int team);
 	void OnHeal(float heal);
 	bool CanHit(int team);
+	virtual void Update(float deltaTime) override;
 
 private:
 	int mTeam;

@@ -12,13 +12,11 @@ public:
 	Player();
 
 	virtual void Initialize() override;
-	
-	Reticle* GetReticle();
 
 private:
 
 	float mMovementSpeed = 100;
-	Reticle* mReticle;
+	GameObjectHandle* mReticle;
 };
 
 

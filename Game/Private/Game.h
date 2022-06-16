@@ -48,6 +48,7 @@ private:
 
 	std::vector<GameObject*>    mAllGameObjects;
 
+	void						CleanUp();
 	void						Render();
 	void						Update(float fDeltaT);
 	Player*						mPlayer;

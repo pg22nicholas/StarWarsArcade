@@ -10,6 +10,7 @@
 
 #include "Engine/Public/EngineInterface.h"
 #include "Engine/Public/SDL.h"
+#include <thread>
 #include "Ball.h"
 #include "Box.h"
 #include "BoxComponent.h"
@@ -105,9 +106,20 @@ void MyGame::Render()
 	for (BoxComponent* box : BoxComponent::AllGameBoxComponents) {
 		box->Render();
 	}
+
 	for (CircleComponent* circle : CircleComponent::AllCircleComponents) {
 		circle->Render();
 	} 
+}
+
+void MyGame::CleanUp() {
+	for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
+		if (!gameObjectHandle->IsValid()) continue;
+		GameObject* gameObject = gameObjectHandle->Get();
+		if (gameObject->IsExpired()) {
+			delete gameObject;
+		}
+	}
 }
 
 void MyGame::Update(float fDeltaT)
@@ -115,10 +127,7 @@ void MyGame::Update(float fDeltaT)
 	for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
 		if (!gameObjectHandle->IsValid()) continue;
 		GameObject* gameObject = gameObjectHandle->Get();
-		if (gameObject->IsExpired()) {
-			delete gameObject;
-		}
-		else {
+		if (!gameObject->IsExpired()) {
 			gameObject->Update(fDeltaT);
 		}
 	}
@@ -131,8 +140,11 @@ void MyGame::Update(float fDeltaT)
 
 void MyGame::Run(float fDeltaT)
 {
+	CleanUp();
+	std::thread RenderThread(&MyGame::Render, this);
 	Update(fDeltaT);
-	Render();
+	RenderThread.join();
+	//Render();
 }
 
 

@@ -15,6 +15,7 @@ public:
 	~GameObject();
 
 	virtual void Initialize();
+	virtual void Update(float deltaTime);
 
 	void AddComponent(Component* ComponentToAdd);
 

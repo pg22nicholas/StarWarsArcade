@@ -20,7 +20,7 @@ public:
 
 	bool IsColliding(PhysicsComponent* OtherPhysicsComponent, bool ignoreZ = false);
 
-	virtual void Update(float pDeltaTime);
+	void Update(float deltaTime) override;
 
 	exVector3 GetVelocity();
 	void SetVelocity(exVector3 velocity);

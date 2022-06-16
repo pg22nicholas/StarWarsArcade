@@ -27,3 +27,6 @@ bool HealthComponent::CanHit(int team)
 {
 	return mTeam != team;
 }
+
+void HealthComponent::Update(float deltaTime)
+{}

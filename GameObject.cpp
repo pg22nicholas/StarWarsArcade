@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "Component.h"
 #include "BoxComponent.h"
 
 GameObject::GameObject():mID(GameObjectManager::GetInstance()->GenerateID())
@@ -53,6 +54,13 @@ void GameObject::Initialize()
 	for (Component* IterationComponent : mComponents)
 	{
 		IterationComponent->Initialize();
+	}
+}
+
+void GameObject::Update(float deltaTime)
+{
+	for (auto* component : mComponents) {
+		component->Update(deltaTime);
 	}
 }
 

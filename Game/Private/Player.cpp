@@ -3,11 +3,13 @@
 #include "Game/Private/Utils.h"
 #include "Bounds.h"
 #include "PlayerController.h"
+#include "GameObjectHandle.h"
 
 Player::Player() : GameObject(exVector3::Zero())
 {
-	mReticle = new Reticle(this);
-	mReticle->Initialize();
+	Reticle* rectile = new Reticle(this);
+	mReticle = new GameObjectHandle(rectile->GetID());
+	rectile->Initialize();
 }
 
 void Player::Initialize()
@@ -24,9 +26,4 @@ void Player::Initialize()
 	// TODO: health, and stat components
 
 	GameObject::Initialize();
-}
-
-Reticle* Player::GetReticle()
-{
-	return mReticle;
 }

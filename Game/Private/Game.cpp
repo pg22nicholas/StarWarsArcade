@@ -118,9 +118,9 @@ void MyGame::Update(float fDeltaT)
 		if (gameObject->IsExpired()) {
 			delete gameObject;
 		}
-	}
-	for (PhysicsComponent* physicsComponent : PhysicsComponent::mAllPhysicsComponents) {
-		physicsComponent->Update(fDeltaT);
+		else {
+			gameObject->Update(fDeltaT);
+		}
 	}
 
 	EnemyShipManager::GetManager()->Update(fDeltaT);

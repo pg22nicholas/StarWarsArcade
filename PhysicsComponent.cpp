@@ -48,7 +48,7 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent, bool
 		float distX = pos1.x - pos2.x;
 		float distY = pos1.y - pos2.y;
 		float distance = sqrtf((distX * distX) + (distY * distY));
-		bool zPlane = ((pos1.z == pos2.z) || ignoreZ);
+		bool zPlane = ((abs(pos1.z - pos2.z) <= 10) || ignoreZ);
 		return (distance <= radius1 + radius2 && zPlane);
 	}
 	if (MyBoxComp != nullptr && OtherBoxComp != nullptr)
@@ -59,7 +59,7 @@ bool PhysicsComponent::IsColliding(PhysicsComponent* OtherPhysicsComponent, bool
 		exVector3 box2 = OtherBoxComp->GetGameObject()->GetTransform()->GetPosition();
 		float box2H = OtherBoxComp->GetHeight() * Bounds::zSizePercentage(box2.z);
 		float box2W = OtherBoxComp->GetWidth() * Bounds::zSizePercentage(box2.z);
-		bool zPlane = ((box1.z == box2.z) || ignoreZ);
+		bool zPlane = ((abs(box1.z - box2.z) <= 10) || ignoreZ);
 
 		// AABB collision check
 		return ((box1.x <= box2.x + box2W &&

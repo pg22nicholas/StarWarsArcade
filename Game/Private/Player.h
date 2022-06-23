@@ -12,7 +12,7 @@ public:
 	Player();
 
 	virtual void Initialize() override;
-	static const int kMaxTime = 60;
+	static const int kMaxTime = 10;
 
 private:
 

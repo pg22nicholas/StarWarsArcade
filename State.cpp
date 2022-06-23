@@ -12,6 +12,7 @@ StateType RunningState::GetStateType()
 void RunningState::EnterState()
 {
 	PlayerManager::GetManager()->Reset();
+	EnemyShipManager::GetManager()->Reset();
 }
 
 void RunningState::ExitState()

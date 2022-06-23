@@ -29,12 +29,38 @@ void EnemyShipManager::Update(float deltaTime)
 									.RotateAroundZ((float)(rand() & (mRotationNoise * 2) - mRotationNoise))
 									.Normalize() * 100;
 
-		new GameObjectHandle((new EnemyShip(shipID++, spawnLocation, vecToPlayer))->GetID());
+		GameObjectHandle* enemyHandle = new GameObjectHandle((new EnemyShip(spawnLocation, vecToPlayer))->GetID());
+		mEnemyShips.push_back(enemyHandle);
 
 		PRINT("Spawn new ship");
 		// reset counter
 		int spawnTime = (rand() % (mMaxTimeSpawn - mMinTimeSpawn)) + mMinTimeSpawn;
 		mDurationRemaining = (float)spawnTime;
+	}
+}
+
+void EnemyShipManager::RemoveShip(int shipID)
+{
+ 	for (int i = 0; i < mEnemyShips.size(); i++) {
+		if (mEnemyShips[i]->IsValid()) {
+			GameObject* obj = mEnemyShips[i]->Get();
+			EnemyShip* ship = dynamic_cast<EnemyShip*>(obj);
+			if (ship != nullptr && ship->GetID() == shipID) {
+				mEnemyShips.erase(mEnemyShips.begin() + i);
+			}
+		}
+	}
+}
+
+void EnemyShipManager::Reset()
+{
+	for (int i = 0; i < mEnemyShips.size(); i++) {
+		if (mEnemyShips[i]->IsValid()) {
+			GameObject* obj = mEnemyShips[i]->Get();
+			EnemyShip* ship = dynamic_cast<EnemyShip*>(obj);
+			ship->OnDestroy();
+			i--;
+		}
 	}
 }
 

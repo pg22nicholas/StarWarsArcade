@@ -1,15 +1,16 @@
 // Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "EnemyShip.h"
+#include "EnemyShipManager.h"
 
 // Still ship at random location (for testing)
-EnemyShip::EnemyShip(int ID): mID(ID), GameObject(exVector3((float)(rand() % 800), (float)(rand() % 600), 50)) {
+EnemyShip::EnemyShip(): GameObject(exVector3((float)(rand() % 800), (float)(rand() % 600), 50)) {
 
 	AddComponent(new PhysicsComponent(this, false, 0, 0, exVector3::Zero()));
 	Initialize();
 }
 
 // Moving ship
-EnemyShip::EnemyShip(int ID, exVector3 location, exVector3 direction) : mID(ID), GameObject(location)
+EnemyShip::EnemyShip(exVector3 location, exVector3 direction) : GameObject(location)
 {
 	AddComponent(new PhysicsComponent(this, false, 0, 0, direction));
 	Initialize();
@@ -23,4 +24,10 @@ void EnemyShip::Initialize()
 	AddComponent(new HealthComponent(this, 6, 1));
 
 	GameObject::Initialize();
+}
+
+void EnemyShip::OnDestroy()
+{	
+	EnemyShipManager::GetManager()->RemoveShip(mID);
+	GameObject::OnDestroy();
 }

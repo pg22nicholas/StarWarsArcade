@@ -9,11 +9,15 @@ public:
 	static EnemyShipManager* GetManager();
 
 	void Update(float deltaTime);
+	void RemoveShip(int shipID);
+	void Reset();
 
 private:
 
 	EnemyShipManager();
 	~EnemyShipManager();
+
+	std::vector<GameObjectHandle*> mEnemyShips;
 
 	const int mMinTimeSpawn = 1;
 	const int mMaxTimeSpawn = 5;

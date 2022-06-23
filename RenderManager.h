@@ -8,6 +8,7 @@ public:
 	static RenderManager* GetManager();
 
 	exVector3 GetRenderPosition(exVector3 position);
+	int GetFontID();
 
 private:
 
@@ -15,5 +16,6 @@ private:
 	~RenderManager();
 
 	static RenderManager* sInstance;
+	int mFontID;
 };
 

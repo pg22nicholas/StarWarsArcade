@@ -10,7 +10,17 @@ PlayerManager* PlayerManager::GetManager()
 	return sInstance;
 }
 
-PlayerManager::PlayerManager()
+void PlayerManager::UpdateScore()
+{
+	++mScore;
+}
+
+int PlayerManager::GetScore()
+{
+	return mScore;
+}
+
+PlayerManager::PlayerManager(): mScore(0)
 {
 	Player* playerPtr = new Player();
 	playerPtr->Initialize();

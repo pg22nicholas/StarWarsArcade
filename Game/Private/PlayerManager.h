@@ -6,7 +6,8 @@ class PlayerManager
 {
 public:
 	static PlayerManager* GetManager();
-
+	void UpdateScore();
+	int GetScore();
 	Player* GetPlayer();
 
 private:
@@ -16,5 +17,6 @@ private:
 	~PlayerManager();
 
 	static PlayerManager* sInstance;
+	int mScore;
 };
 

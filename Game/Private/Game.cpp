@@ -171,10 +171,12 @@ void MyGame::Update(float fDeltaT)
 void MyGame::Run(float fDeltaT)
 {
 	CleanUp();
-	//std::thread RenderThread(&MyGame::Render, this);
-	Update(fDeltaT);
-	Render();
-	//RenderThread.join();
+	//Update(fDeltaT);
+	//Render();
+	std::thread UpdateThread(&MyGame::Update, this, fDeltaT);
+	std::thread RenderThread(&MyGame::Render, this);
+	UpdateThread.join();
+	RenderThread.join();
 }
 
 

@@ -11,8 +11,6 @@
 #include "Engine/Public/EngineInterface.h"
 #include "Engine/Public/SDL.h"
 #include <thread>
-#include "Ball.h"
-#include "Box.h"
 #include "BoxComponent.h"
 #include "CircleComponent.h"
 #include "TextComponent.h"
@@ -37,7 +35,6 @@ MyGame::MyGame()
 	mRunningState = new RunningState();
 	mGameOverState = new GameOverState();
 	mCurrentState = mRunningState;
-	mElapsedTime = 0;
 }
 
 //-----------------------------------------------------------------
@@ -98,10 +95,10 @@ void MyGame::OnEvent( SDL_Event* pEvent )
 void MyGame::OnEventsConsumed()
 {
 	int nKeys = 0;
+	mInput = 0;
 	const Uint8 *pState = SDL_GetKeyboardState( &nKeys );
 
-	mInput |= pState[SDL_SCANCODE_LEFT];
-	mInput |= pState[SDL_SCANCODE_RIGHT] << 1;
+	mInput |= pState[SDL_SCANCODE_R];
 
 	for (ControllerComponent* controller : ControllerComponent::AllGameControllerComponents) {
 		controller->ReadInput(pState);
@@ -111,14 +108,14 @@ void MyGame::OnEventsConsumed()
 void MyGame::Render()
 {
 	for (BoxComponent* box : BoxComponent::AllGameBoxComponents) {
-		box->Render();
+		box->Render(mCurrentState->GetStateType());
 	}
 
 	for (CircleComponent* circle : CircleComponent::AllCircleComponents) {
-		circle->Render();
+		circle->Render(mCurrentState->GetStateType());
 	}
 	for (TextComponent* text : TextComponent::AllTextComponents) {
-		text->Render();
+		text->Render(mCurrentState->GetStateType());
 	}
 }
 
@@ -134,8 +131,30 @@ void MyGame::CleanUp() {
 
 void MyGame::Update(float fDeltaT)
 {
-	mElapsedTime += fDeltaT;
-	for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
+	PlayerManager::GetManager()->mElapsedTime += fDeltaT;
+	mCurrentState->RunState(fDeltaT);
+	switch (mCurrentState->GetStateType())
+	{
+		case StateType::Running:
+			if (RunningState* currentRunningState = dynamic_cast<RunningState*>(mCurrentState)) {
+				if (PlayerManager::GetManager()->mElapsedTime > PlayerManager::GetManager()->GetPlayer()->kMaxTime) {
+					mCurrentState->ExitState();
+					mCurrentState = mGameOverState;
+					mCurrentState->EnterState();
+				}
+			}
+			break;
+		case StateType::GameOver:
+			if (GameOverState* currentGameOverState = dynamic_cast<GameOverState*>(mCurrentState)) {
+				if (mInput != 0) {
+					mCurrentState->ExitState();
+					mCurrentState = mRunningState;
+					mCurrentState->EnterState();
+				}
+			}
+			break;
+	}
+	/*for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
 		if (!gameObjectHandle->IsValid()) continue;
 		GameObject* gameObject = gameObjectHandle->Get();
 		if (!gameObject->IsExpired()) {
@@ -143,7 +162,7 @@ void MyGame::Update(float fDeltaT)
 		}
 	}
 
-	EnemyShipManager::GetManager()->Update(fDeltaT);
+	EnemyShipManager::GetManager()->Update(fDeltaT);*/
 }
 
 //-----------------------------------------------------------------

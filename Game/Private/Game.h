@@ -13,8 +13,6 @@
 #include "CircleComponent.h"
 #include "BoxComponent.h"
 #include "PhysicsComponent.h"
-#include "Ship.h"
-#include "Bullet.h"
 #include "Player.h"
 #include "EnemyShip.h"
 #include "State.h"
@@ -46,7 +44,6 @@ private:
 	int							mFontID;
 
 	int							mInput;	// captures all input keys
-	float						mElapsedTime;
 
 	std::vector<GameObject*>    mAllGameObjects;
 

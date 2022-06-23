@@ -1,3 +1,5 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
+
 #pragma once
 #include "Component.h"
 #include "Projectile.h"
@@ -13,8 +15,8 @@ public:
 	virtual void Update(float deltaTime) override;
 
 private:
-	int mTeam;
-	float mDamage;
-	std::vector<GameObject*> mTurrets;
+	int mTeam; // Spawning object's team to prevent friendly fire
+	float mDamage; // Damage dealt by projectile
+	std::vector<GameObject*> mTurrets; // Location(s) from which projectiles get spawned
 };
 

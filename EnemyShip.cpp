@@ -1,24 +1,26 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "EnemyShip.h"
 
-EnemyShip::EnemyShip(): GameObject(exVector3(rand() % 800, rand() % 600, 50)) {
+// Still ship at random location (for testing)
+EnemyShip::EnemyShip(): GameObject(exVector3((float)(rand() % 800), (float)(rand() % 600), 50)) {
 
 	AddComponent(new PhysicsComponent(this, false, 0, 0, exVector3::Zero()));
 	Initialize();
 }
 
+// Moving ship
 EnemyShip::EnemyShip(exVector3 location, exVector3 direction) : GameObject(location)
 {
 	AddComponent(new PhysicsComponent(this, false, 0, 0, direction));
 	Initialize();
 }
 
+// Adds two boxes for body and wings, and a health component
 void EnemyShip::Initialize()
 {
 	AddComponent(new BoxComponent(this, 100, 100));
 	AddComponent(new BoxComponent(this, 200, 25));
 	AddComponent(new HealthComponent(this, 6, 1));
-	//new GameObjectHandle((new ShipWing(exVector3(95, 0, 0), this))->GetID());
-	//new GameObjectHandle((new ShipWing(exVector3(-95, 0, 0), this))->GetID());
 
 	GameObject::Initialize();
 }

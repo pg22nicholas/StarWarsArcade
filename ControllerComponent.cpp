@@ -1,6 +1,8 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "ControllerComponent.h"
 
 std::vector<ControllerComponent*> ControllerComponent::AllGameControllerComponents;
+// All controllers get added to a list on init and removed on destroy
 ControllerComponent::ControllerComponent(GameObject* Owner) : Component(Owner) {}
 
 void ControllerComponent::Initialize()

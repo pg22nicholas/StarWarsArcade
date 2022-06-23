@@ -1,6 +1,10 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include <vector>
 #include "GameObject.h"
+
+// Base class for controllers
+// Does nothing, but gets inherited by PlayerController and ReticleController
 class ControllerComponent : public Component
 {
 public:

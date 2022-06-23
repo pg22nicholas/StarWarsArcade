@@ -8,7 +8,7 @@ class EngineInterface;
 
 std::vector<BoxComponent*> BoxComponent::AllGameBoxComponents;
 
-BoxComponent::BoxComponent(GameObject* Owner, float width, float height, bool isBackground) :ShapeComponent(Owner, isBackground), mWidth(width)
+BoxComponent::BoxComponent(GameObject* Owner, float width, float height, StateType renderState, bool isBackground) :ShapeComponent(Owner, renderState, isBackground), mWidth(width)
 , mHeight(height)
 {
 }
@@ -30,8 +30,9 @@ ComponentTypes BoxComponent::GetType()
 	return ComponentTypes::Box;
 }
 
-void BoxComponent::Render()
+void BoxComponent::Render(const StateType& state)
 {
+	if (state != mRenderState) return;
 	exVector3 position = RenderManager::GetManager()->GetRenderPosition(mOwningGameObject->GetTransform()->GetLocalPosition());
 
 	// keep local to player camera position
@@ -50,7 +51,7 @@ void BoxComponent::Render()
 	bottomRight.x = x + widthBasedOnZ / 2;
 	bottomRight.y = y + heightBasedOnZ / 2;
 
-	AccessEngine()->DrawBox(topLeft, bottomRight, mC, (bIsBackground?(Bounds::zBounds + 1):position.z));
+	AccessEngine()->DrawBox(topLeft, bottomRight, mC, (bIsBackground?(Bounds::zBounds + 1):(int)position.z));
 }
 
 float BoxComponent::GetWidth()

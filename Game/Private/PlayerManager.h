@@ -9,6 +9,9 @@ public:
 	void UpdateScore();
 	int GetScore();
 	Player* GetPlayer();
+	void Reset();
+
+	float mElapsedTime;
 
 private:
 	GameObjectHandle* mPlayer;

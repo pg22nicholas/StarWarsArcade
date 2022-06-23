@@ -40,4 +40,10 @@ Player* PlayerManager::GetPlayer()
 	return nullptr;
 }
 
+void PlayerManager::Reset()
+{
+	mScore = 0;
+	mElapsedTime = 0;
+}
+
 PlayerManager* PlayerManager::sInstance = nullptr;

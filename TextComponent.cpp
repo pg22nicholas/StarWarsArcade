@@ -42,5 +42,5 @@ void TextComponent::Render(const StateType& state)
 	vec2Position.x = vec3Position.x;
 	vec2Position.y = vec3Position.y;
 
-	DrawText(RenderManager::GetManager()->GetFontID(), vec2Position, mText.c_str(), mC, vec3Position.z);
+	DrawText(RenderManager::GetManager()->GetFontID(), vec2Position, mText.c_str(), mC, (int)vec3Position.z);
 }

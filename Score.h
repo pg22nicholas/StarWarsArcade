@@ -16,7 +16,7 @@ public:
 	virtual void Update(float deltaTime) override;
 
 private:
-	float mScore;
+	int mScore;
 	TextComponent* mTextComponent;
 };
 

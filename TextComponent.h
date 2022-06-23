@@ -1,8 +1,10 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include "ShapeComponent.h"
 #include "State.h"
 #include <iostream>
 
+// Shape component to render text
 class TextComponent :
     public ShapeComponent
 {
@@ -14,11 +16,10 @@ public:
 	virtual void Destroy() override;
 	virtual ComponentTypes GetType() override;
 
-	virtual void SetText(std::string newText);
-	virtual void Render();
+	virtual void SetText(const std::string& newText);
+	virtual void Render(const StateType& state) override;
 
 private:
 	std::string mText;
-	StateType mRenderState;
 };
 

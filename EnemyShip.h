@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include "ShipWing.h"
 #include "PhysicsComponent.h"

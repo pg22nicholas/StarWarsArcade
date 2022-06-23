@@ -1,6 +1,9 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include "GameObject.h"
 #include "TextComponent.h"
+
+// Game object to display the time remaining
 class Timer :
     public GameObject
 {
@@ -12,8 +15,6 @@ public:
 	virtual void Update(float deltaTime) override;
 
 private:
-	float mCurrentTime;
-	float mMaxTime;
 	TextComponent* mTextComponent;
 };
 

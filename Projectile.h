@@ -1,9 +1,11 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include "GameObject.h"
 #include "PhysicsComponent.h"
 #include "CircleComponent.h"
 #include "HealthComponent.h"
 
+// Collidable GO that deals damage to objects not on the same team
 class Projectile :
     public GameObject, IPhysicsCollisionEvent
 {

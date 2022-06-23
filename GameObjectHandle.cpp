@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "GameObjectHandle.h"
 
 std::vector<GameObjectHandle*> GameObjectHandle::AllGameObjectHandles;

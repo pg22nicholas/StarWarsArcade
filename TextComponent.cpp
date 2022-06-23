@@ -1,11 +1,14 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "TextComponent.h"
 #include "RenderManager.h"
+
+// Redefine macro because of a conflict in a windows file
 #define DrawText AccessEngine()->DrawText
 
 class EngineInterface;
 
 std::vector<TextComponent*> TextComponent::AllTextComponents;
-TextComponent::TextComponent(GameObject* Owner, std::string text, StateType renderState) :ShapeComponent(Owner, false), mText(text), mRenderState(renderState) {}
+TextComponent::TextComponent(GameObject* Owner, std::string text, StateType renderState) :ShapeComponent(Owner, renderState, false), mText(text) {}
 
 void TextComponent::Initialize()
 {
@@ -24,13 +27,15 @@ ComponentTypes TextComponent::GetType()
 	return ComponentTypes::Text;
 }
 
-void TextComponent::SetText(std::string newText)
+void TextComponent::SetText(const std::string& newText)
 {
 	mText = newText;
 }
 
-void TextComponent::Render()
+// Draw text at the GO position
+void TextComponent::Render(const StateType& state)
 {
+	if (state != mRenderState && mRenderState != StateType::None) return;
 	exVector3 vec3Position = RenderManager::GetManager()->GetRenderPosition(mOwningGameObject->GetTransform()->GetLocalPosition());
 
 	exVector2 vec2Position;

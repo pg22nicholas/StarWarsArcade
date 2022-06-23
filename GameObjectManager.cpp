@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "GameObjectManager.h"
 
 // Singleton manager to track hashmap of existing gameobjects 

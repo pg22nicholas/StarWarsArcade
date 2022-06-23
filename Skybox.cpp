@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "Skybox.h"
 #include "Star.h"
 
@@ -5,11 +6,12 @@ Skybox::Skybox():GameObject(exVector3(0, 0, 0)) {
 	Initialize();
 }
 
+// Generate stars at random positions within the bounds
 void Skybox::Initialize()
 {
 	float width = kViewportWidth + 2 * Bounds::xBounds;
 	float height = kViewportHeight + 2 * Bounds::YBounds;
-	BoxComponent* skybox = new BoxComponent(this, kViewportWidth + 2 * Bounds::xBounds, kViewportHeight + 2 * Bounds::YBounds, true);
+	BoxComponent* skybox = new BoxComponent(this, kViewportWidth + 2 * Bounds::xBounds, kViewportHeight + 2 * Bounds::YBounds, StateType::Running, true);
 	skybox->SetColor(ColorTypes::BLACK);
 	AddComponent(skybox);
 

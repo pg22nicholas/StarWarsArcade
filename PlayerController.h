@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include "ControllerComponent.h"
 #include "PhysicsComponent.h"
@@ -7,6 +8,7 @@
 #define UP_INPUT 2
 #define DOWN_INPUT 3
 
+// Handles movement for the player
 class PlayerController :
     public ControllerComponent
 {

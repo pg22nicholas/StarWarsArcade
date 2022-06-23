@@ -1,9 +1,11 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "PlayerController.h"
 #include "Bounds.h"
 #include <algorithm>
 
 PlayerController::PlayerController(GameObject* Owner) : ControllerComponent (Owner), mPlayerInput(0) {}
 
+// Checks if WASD has been pressed
 void PlayerController::ReadInput(const uint8_t* pState)
 {
 	mPlayerInput |= pState[SDL_SCANCODE_W] << UP_INPUT;
@@ -14,6 +16,7 @@ void PlayerController::ReadInput(const uint8_t* pState)
 	ParseInput();
 }
 
+// Adds velocity to the player based on input
 void PlayerController::ParseInput()
 {
 	exVector3 position = mOwningGameObject->GetTransform()->GetPosition();

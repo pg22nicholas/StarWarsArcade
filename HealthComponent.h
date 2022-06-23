@@ -1,7 +1,9 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include "Component.h"
 #include "GameObject.h"
 
+// Health component tracks current and max health, and allows the object to take damage or heal
 class HealthComponent :
     public Component
 {

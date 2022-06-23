@@ -1,8 +1,9 @@
+// Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "ReticleController.h"
 
 ReticleController::ReticleController(GameObject* Owner) : ControllerComponent(Owner), mReticleInput(0), bIsFireHeld(false) {}
 
-
+// Check for arrow keys or space to fire
 void ReticleController::ReadInput(const uint8_t* pState)
 {
 	mReticleInput |= pState[SDL_SCANCODE_UP] << UP_INPUT;
@@ -14,6 +15,7 @@ void ReticleController::ReadInput(const uint8_t* pState)
 	ParseInput();
 }
 
+// Add velocity and/or fire on input
 void ReticleController::ParseInput()
 {
 	PhysicsComponent* physicsComp = mOwningGameObject->FindComponent<PhysicsComponent>(ComponentTypes::Physics);
@@ -40,6 +42,7 @@ void ReticleController::ParseInput()
 			mOwningGameObject->GetTransform()->GetParent()->FindComponent<AttackComponent>(ComponentTypes::Attack)->Fire(GetAimDirection());
 		}
 	}
+	// If fire key is being held down, don't fire multiple times
 	else {
 		bIsFireHeld = false;
 	}
@@ -53,6 +56,7 @@ void ReticleController::Update(float deltaTime)
 	// TODO: Read inputs here
 }
 
+// Fake raycast so we target the accurate z-index
 exVector3 ReticleController::GetAimDirection()
 {
 	exVector3 gameObjectPosition = mOwningGameObject->GetTransform()->GetLocalPosition();

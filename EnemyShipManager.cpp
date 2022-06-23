@@ -29,7 +29,7 @@ void EnemyShipManager::Update(float deltaTime)
 									.RotateAroundZ((float)(rand() & (mRotationNoise * 2) - mRotationNoise))
 									.Normalize() * 100;
 
-		new GameObjectHandle((new EnemyShip(spawnLocation, vecToPlayer))->GetID());
+		new GameObjectHandle((new EnemyShip(shipID++, spawnLocation, vecToPlayer))->GetID());
 
 		PRINT("Spawn new ship");
 		// reset counter

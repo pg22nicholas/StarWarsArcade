@@ -26,6 +26,7 @@ private:
 	exVector3 FindValidSpawnLocation();
 	int GetRandBetweenValues(int a, int b);
 
+	int shipID = 0;
 	static EnemyShipManager* sInstance;
 };
 

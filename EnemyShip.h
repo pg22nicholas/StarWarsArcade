@@ -9,9 +9,13 @@ class EnemyShip :
     public GameObject
 {
 public:
-	EnemyShip();
-	EnemyShip(exVector3 location, exVector3 direction);
+	EnemyShip(int ID);
+	EnemyShip(int ID, exVector3 location, exVector3 direction);
 
 	virtual void Initialize() override;
+
+private:
+
+	int mID;
 };
 

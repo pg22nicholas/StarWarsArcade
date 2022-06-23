@@ -78,6 +78,7 @@ EnemyShipManager::~EnemyShipManager()
 // based on player position and game bounds, spawn in valid, random location
 exVector3 EnemyShipManager::FindValidSpawnLocation()
 {
+	srand(time(NULL));
 	int spawnTime;
 
 	exVector3 playerPosition = PlayerManager::GetManager()->GetPlayer()->GetTransform()->GetPosition();

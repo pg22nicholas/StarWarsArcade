@@ -179,6 +179,9 @@
     <ClInclude Include="ShipWing.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Star.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="TextComponent.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +217,9 @@
     <ClCompile Include="ShipWing.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Star.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="TextComponent.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

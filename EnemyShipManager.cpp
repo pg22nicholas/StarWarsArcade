@@ -104,6 +104,4 @@ int EnemyShipManager::GetRandBetweenValues(int a, int b)
 	return rand() % std::abs(b - a) + min(a, b);
 }
 
-
-
 EnemyShipManager* EnemyShipManager::sInstance = nullptr;

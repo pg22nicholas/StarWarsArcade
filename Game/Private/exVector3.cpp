@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "exVector3.h"
 
 exVector3::exVector3(float x, float y, float z) : x(x), y(y), z(z)

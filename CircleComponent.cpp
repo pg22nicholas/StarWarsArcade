@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "CircleComponent.h"
 #include "Game/Private/PlayerManager.h"
 #include "RenderManager.h"

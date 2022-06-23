@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, Shatrujit Aditya Kumar, All Rights Reserved
 #include "GameObject.h"
 #include "Component.h"
 #include "BoxComponent.h"

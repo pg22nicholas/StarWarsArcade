@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "RenderManager.h"
 #include "Bounds.h"
 

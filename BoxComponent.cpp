@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "BoxComponent.h"
 #include "GameObject.h"
 #include "Game/Private/PlayerManager.h"

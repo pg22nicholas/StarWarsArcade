@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "EnemyShipManager.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
@@ -21,7 +22,6 @@ void EnemyShipManager::Update(float deltaTime)
 
 	// Spawn an enemy ship
 	if (mDurationRemaining <= 0) {
-		// TODO: Spawn new ship 
 		exVector3 spawnLocation = FindValidSpawnLocation();
 		
 		// Send enemy ship in directly roughly towards player
@@ -39,6 +39,7 @@ void EnemyShipManager::Update(float deltaTime)
 	}
 }
 
+// remove a single enemy ship from the reference list
 void EnemyShipManager::RemoveShip(int shipID)
 {
  	for (int i = 0; i < mEnemyShips.size(); i++) {
@@ -52,6 +53,7 @@ void EnemyShipManager::RemoveShip(int shipID)
 	}
 }
 
+// Reset entire list of enemy ships and delete them all
 void EnemyShipManager::Reset()
 {
 	for (int i = 0; i < mEnemyShips.size(); i++) {

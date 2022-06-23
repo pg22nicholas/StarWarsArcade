@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "PhysicsComponent.h"
 #include "Transform.h"
 #include "GameObject.h"

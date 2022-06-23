@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "Player.h"
 #include "Engine/Public/EngineInterface.h"
 #include "Game/Private/Utils.h"
@@ -30,7 +31,6 @@ void Player::Initialize()
 	turrets.push_back(new GameObject(exVector3(Bounds::centerX, Bounds::centerY, 0), this));
 	AddComponent(new AttackComponent(this, 1, 0, turrets));
 	AddComponent(new HealthComponent(this, 10, 0));
-	// TODO: health, and stat components
 
 	GameObject::Initialize();
 }

@@ -15,6 +15,7 @@
 #include "Box.h"
 #include "BoxComponent.h"
 #include "CircleComponent.h"
+#include "TextComponent.h"
 #include "ControllerComponent.h"
 #include "PlayerManager.h"
 #include "BoundsBorderGenerator.h"
@@ -33,6 +34,10 @@ MyGame::MyGame()
 	, mFontID( -1 )
 	, mPlayer(nullptr)
 {
+	mRunningState = new RunningState();
+	mGameOverState = new GameOverState();
+	mCurrentState = mRunningState;
+	mElapsedTime = 0;
 }
 
 //-----------------------------------------------------------------
@@ -44,6 +49,8 @@ MyGame::~MyGame()
 		if (handlePtr->IsValid()) delete handlePtr->Get();
 		delete handlePtr;
 	}
+	delete mRunningState;
+	delete mGameOverState;
 }
 
 //-----------------------------------------------------------------
@@ -109,7 +116,10 @@ void MyGame::Render()
 
 	for (CircleComponent* circle : CircleComponent::AllCircleComponents) {
 		circle->Render();
-	} 
+	}
+	for (TextComponent* text : TextComponent::AllTextComponents) {
+		text->Render();
+	}
 }
 
 void MyGame::CleanUp() {
@@ -124,6 +134,7 @@ void MyGame::CleanUp() {
 
 void MyGame::Update(float fDeltaT)
 {
+	mElapsedTime += fDeltaT;
 	for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
 		if (!gameObjectHandle->IsValid()) continue;
 		GameObject* gameObject = gameObjectHandle->Get();
@@ -141,10 +152,10 @@ void MyGame::Update(float fDeltaT)
 void MyGame::Run(float fDeltaT)
 {
 	CleanUp();
-	std::thread RenderThread(&MyGame::Render, this);
+	//std::thread RenderThread(&MyGame::Render, this);
 	Update(fDeltaT);
-	RenderThread.join();
-	//Render();
+	Render();
+	//RenderThread.join();
 }
 
 

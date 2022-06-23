@@ -18,3 +18,9 @@ enum class MOVEMENT {
 	RIGHT,
 	NONE
 };
+
+enum class StateType {
+	None,
+	Running,
+	GameOver,
+};

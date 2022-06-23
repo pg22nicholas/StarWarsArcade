@@ -88,7 +88,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(ProjectDir)/3rdParty/SDL;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/Game/Private;$(ProjectDir);$(ProjectDir)/3rdParty/SDL</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>Out\;3rdParty/SDL/SDL2-2.0.3/lib/x86;3rdParty/SDL/SDL2_gfx-1.0.1/lib;3rdParty/SDL/SDL2_ttf-2.0.12/lib</AdditionalLibraryDirectories>
@@ -143,12 +143,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AttackComponent.h" />
-    <ClInclude Include="Ball.h" />
     <ClInclude Include="Bounds.h" />
     <ClInclude Include="BoundsBorderGenerator.h" />
-    <ClInclude Include="Box.h" />
     <ClInclude Include="BoxComponent.h" />
-    <ClInclude Include="Bullet.h" />
     <ClInclude Include="CircleComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="ControllerComponent.h" />
@@ -160,6 +157,7 @@
     <ClInclude Include="PlayerController.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="RenderManager.h" />
+    <ClInclude Include="RestartText.h" />
     <ClInclude Include="ReticleController.h" />
     <ClInclude Include="Engine\Public\EngineInterface.h" />
     <ClInclude Include="Engine\Public\EngineTypes.h" />
@@ -176,7 +174,6 @@
     <ClInclude Include="Reticle.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="ShapeComponent.h" />
-    <ClInclude Include="Ship.h" />
     <ClInclude Include="ShipWing.h" />
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="Star.h" />
@@ -187,12 +184,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AttackComponent.cpp" />
-    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bounds.cpp" />
     <ClCompile Include="BoundsBorderGenerator.cpp" />
-    <ClCompile Include="Box.cpp" />
     <ClCompile Include="BoxComponent.cpp" />
-    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="CircleComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="ControllerComponent.cpp" />
@@ -204,6 +198,7 @@
     <ClCompile Include="PlayerController.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="RenderManager.cpp" />
+    <ClCompile Include="RestartText.cpp" />
     <ClCompile Include="ReticleController.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Game\Private\exVector3.cpp" />
@@ -215,7 +210,6 @@
     <ClCompile Include="Reticle.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="ShapeComponent.cpp" />
-    <ClCompile Include="Ship.cpp" />
     <ClCompile Include="ShipWing.cpp" />
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Star.cpp" />

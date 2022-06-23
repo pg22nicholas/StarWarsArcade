@@ -4,12 +4,15 @@
 #include "Bounds.h"
 #include "PlayerController.h"
 #include "GameObjectHandle.h"
+#include "Timer.h"
 
 Player::Player() : GameObject(exVector3::Zero())
 {
 	Reticle* rectile = new Reticle(this);
 	mReticle = new GameObjectHandle(rectile->GetID());
 	rectile->Initialize();
+
+	new GameObjectHandle((new Timer(this, 60))->GetID());
 }
 
 void Player::Initialize()

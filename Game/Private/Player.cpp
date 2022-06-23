@@ -5,6 +5,7 @@
 #include "PlayerController.h"
 #include "GameObjectHandle.h"
 #include "Timer.h"
+#include "Score.h"
 
 Player::Player() : GameObject(exVector3::Zero())
 {
@@ -13,6 +14,7 @@ Player::Player() : GameObject(exVector3::Zero())
 	rectile->Initialize();
 
 	new GameObjectHandle((new Timer(this, 60))->GetID());
+	new GameObjectHandle((new Score(this))->GetID());
 }
 
 void Player::Initialize()

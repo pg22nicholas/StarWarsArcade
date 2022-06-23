@@ -1,4 +1,5 @@
 #include "HealthComponent.h"
+#include "Game/Private/PlayerManager.h"
 
 HealthComponent::HealthComponent(GameObject* Owner, float health, int team):Component(Owner), mTeam(team), mCurrent(health), mMax(health) {}
 
@@ -14,7 +15,10 @@ void HealthComponent::TryDamage(float damage, int team)
 	mCurrent -= damage;
 	if (mCurrent < 0) mCurrent = 0;
 
-	if (mCurrent == 0) mOwningGameObject->Expire();
+	if (mCurrent == 0) {
+		mOwningGameObject->Expire();
+		PlayerManager::GetManager()->UpdateScore();
+	}
 }
 
 void HealthComponent::OnHeal(float heal)

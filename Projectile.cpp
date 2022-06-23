@@ -33,7 +33,7 @@ void Projectile::OnCollision(PhysicsComponent* pCurrentComponent, PhysicsCompone
 
 	//Check if expired, i.e, has already hit something
 	if (IsExpired()) return;
-	Expire();
+	OnDestroy();
 
 	// Deal damage
 	otherHealth->TryDamage(mDamage, mTeam);

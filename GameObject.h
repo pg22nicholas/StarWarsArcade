@@ -41,6 +41,8 @@ public:
 	void Expire();
 	int GetID();
 
+	virtual void OnDestroy();
+
 protected:
 	std::vector<Component*> mComponents;
 	Transform* mTransform;

@@ -1,5 +1,6 @@
 // Copyright (C) 2022 Shatrujit Aditya Kumar, All Rights Reserved
 #include "EnemyShip.h"
+#include "EnemyShipManager.h"
 
 // Still ship at random location (for testing)
 EnemyShip::EnemyShip(): GameObject(exVector3((float)(rand() % 800), (float)(rand() % 600), 50)) {
@@ -23,4 +24,10 @@ void EnemyShip::Initialize()
 	AddComponent(new HealthComponent(this, 6, 1));
 
 	GameObject::Initialize();
+}
+
+void EnemyShip::OnDestroy()
+{	
+	EnemyShipManager::GetManager()->RemoveShip(mID);
+	GameObject::OnDestroy();
 }

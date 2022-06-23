@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "ShapeComponent.h"
 
 ShapeComponent::ShapeComponent(GameObject* Owner, StateType renderState, bool isBackground) :Component(Owner), mRenderState(renderState), bIsBackground(isBackground)

@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "EnemyShipManager.h"
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
@@ -21,7 +22,6 @@ void EnemyShipManager::Update(float deltaTime)
 
 	// Spawn an enemy ship
 	if (mDurationRemaining <= 0) {
-		// TODO: Spawn new ship 
 		exVector3 spawnLocation = FindValidSpawnLocation();
 		
 		// Send enemy ship in directly roughly towards player
@@ -29,12 +29,40 @@ void EnemyShipManager::Update(float deltaTime)
 									.RotateAroundZ((float)(rand() & (mRotationNoise * 2) - mRotationNoise))
 									.Normalize() * 100;
 
-		new GameObjectHandle((new EnemyShip(spawnLocation, vecToPlayer))->GetID());
+		GameObjectHandle* enemyHandle = new GameObjectHandle((new EnemyShip(spawnLocation, vecToPlayer))->GetID());
+		mEnemyShips.push_back(enemyHandle);
 
 		PRINT("Spawn new ship");
 		// reset counter
 		int spawnTime = (rand() % (mMaxTimeSpawn - mMinTimeSpawn)) + mMinTimeSpawn;
 		mDurationRemaining = (float)spawnTime;
+	}
+}
+
+// remove a single enemy ship from the reference list
+void EnemyShipManager::RemoveShip(int shipID)
+{
+ 	for (int i = 0; i < mEnemyShips.size(); i++) {
+		if (mEnemyShips[i]->IsValid()) {
+			GameObject* obj = mEnemyShips[i]->Get();
+			EnemyShip* ship = dynamic_cast<EnemyShip*>(obj);
+			if (ship != nullptr && ship->GetID() == shipID) {
+				mEnemyShips.erase(mEnemyShips.begin() + i);
+			}
+		}
+	}
+}
+
+// Reset entire list of enemy ships and delete them all
+void EnemyShipManager::Reset()
+{
+	for (int i = 0; i < mEnemyShips.size(); i++) {
+		if (mEnemyShips[i]->IsValid()) {
+			GameObject* obj = mEnemyShips[i]->Get();
+			EnemyShip* ship = dynamic_cast<EnemyShip*>(obj);
+			ship->OnDestroy();
+			i--;
+		}
 	}
 }
 

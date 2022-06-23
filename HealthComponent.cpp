@@ -18,7 +18,7 @@ void HealthComponent::TryDamage(float damage, int team)
 	if (mCurrent < 0) mCurrent = 0;
 
 	if (mCurrent == 0) {
-		mOwningGameObject->Expire();
+		mOwningGameObject->OnDestroy();
 		PlayerManager::GetManager()->UpdateScore();
 	}
 }

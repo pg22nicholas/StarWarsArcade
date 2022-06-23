@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "Bounds.h"
 
 const exVector3 Bounds::TopLeft = exVector3(0, 0, 0);

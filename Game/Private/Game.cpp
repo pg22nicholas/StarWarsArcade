@@ -154,15 +154,6 @@ void MyGame::Update(float fDeltaT)
 			}
 			break;
 	}
-	/*for (GameObjectHandle* gameObjectHandle : GameObjectHandle::AllGameObjectHandles) {
-		if (!gameObjectHandle->IsValid()) continue;
-		GameObject* gameObject = gameObjectHandle->Get();
-		if (!gameObject->IsExpired()) {
-			gameObject->Update(fDeltaT);
-		}
-	}
-
-	EnemyShipManager::GetManager()->Update(fDeltaT);*/
 }
 
 //-----------------------------------------------------------------
@@ -171,8 +162,6 @@ void MyGame::Update(float fDeltaT)
 void MyGame::Run(float fDeltaT)
 {
 	CleanUp();
-	//Update(fDeltaT);
-	//Render();
 	std::thread UpdateThread(&MyGame::Update, this, fDeltaT);
 	std::thread RenderThread(&MyGame::Render, this);
 	UpdateThread.join();

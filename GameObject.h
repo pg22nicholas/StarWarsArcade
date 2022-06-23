@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include <vector>
 #include "Component.h"
@@ -40,6 +41,8 @@ public:
 	bool IsExpired();
 	void Expire();
 	int GetID();
+
+	virtual void OnDestroy();
 
 protected:
 	std::vector<Component*> mComponents;

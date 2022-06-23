@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "BoundsBorderGenerator.h"
 #include "Engine/Public/EngineInterface.h"
 #include "Bounds.h"

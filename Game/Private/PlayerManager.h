@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #pragma once
 #include "Player.h"
 #include "GameObjectHandle.h"

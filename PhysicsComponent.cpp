@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #include "PhysicsComponent.h"
 #include "Transform.h"
 #include "GameObject.h"
@@ -121,7 +122,7 @@ void PhysicsComponent::Update(float pDeltaTime)
 
 	// Probably should be setting up handles before we start doing more memory management
 	if (currPos.z > Bounds::zBounds || abs(currPos.x) > Bounds::xBounds + kViewportWidth/2 || abs(currPos.y) > Bounds::YBounds + kViewportHeight / 2) {
-		mOwningGameObject->Expire();
+		mOwningGameObject->OnDestroy();
 		return;
 	}
 

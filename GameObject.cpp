@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, Shatrujit Aditya Kumar, All Rights Reserved
 #include "GameObject.h"
 #include "Component.h"
 #include "BoxComponent.h"
@@ -79,9 +80,16 @@ void GameObject::Expire()
 	bIsExpired = true;
 }
 
+
 int GameObject::GetID()
 {
 	return mID;
+}
+
+void GameObject::OnDestroy()
+{
+	bIsExpired = true;
+	// For overriding in child classes
 }
 
 

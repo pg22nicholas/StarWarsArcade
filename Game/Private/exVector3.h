@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, Shatrujit Aditya Kumar, All Rights Reserved
 #pragma once
 #include "Engine/Public/EngineTypes.h"
 #include <math.h>

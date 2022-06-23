@@ -13,5 +13,11 @@ public:
 	EnemyShip(exVector3 location, exVector3 direction);
 
 	virtual void Initialize() override;
+
+	void OnDestroy() override;
+
+private:
+
+	int mShipID;
 };
 

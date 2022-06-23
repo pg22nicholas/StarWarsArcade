@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #pragma once
 #include "Engine/Public/EngineInterface.h"
 #include "Game/Private/exVector3.h"

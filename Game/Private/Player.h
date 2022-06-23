@@ -1,3 +1,4 @@
+// Copyright (C) 2022 Nicholas Johnson, All Rights Reserved
 #pragma once
 #include "GameObject.h"
 #include "PhysicsComponent.h"
@@ -12,7 +13,7 @@ public:
 	Player();
 
 	virtual void Initialize() override;
-	static const int kMaxTime = 60;
+	static const int kMaxTime = 10;
 
 private:
 
